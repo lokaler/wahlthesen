@@ -7,6 +7,7 @@ define([
 	'views/QuestionView'
 
 ], function (
+
 	app,
 	_,
 	Backbone,
@@ -18,7 +19,7 @@ define([
 	var QuestionsView = Backbone.Marionette.CompositeView.extend({
 
 		itemViewContainer: 'tbody',
-		template: '#template-question-table',
+		template: '#template-questions-table',
 		itemView: QuestionView,
 
 		triggers: {

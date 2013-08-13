@@ -19,6 +19,9 @@ $color_fw: #03b1fb
 @mixin default-box-shadow
 	@include box-shadow($color_shadow 4px 4px 4px)
 
+@mixin default-box-shadow-bottom
+	@include box-shadow($color_shadow 0 4px 4px)
+
 body
 	padding: 0
 	margin: 0
@@ -49,17 +52,43 @@ body
 						width: 34%
 						background-color: #f4c800
 
+#filter
+
+	> div
+
+		border-top: 1px solid $color_border_grey
+		border-bottom: 1px solid $color_border_grey
+		height: 34px
+
+		.filter
+			float: left
+			margin: 6px 0 4px 16px
+			height: 19px
+			line-height: 23px
+
+			.checkbox
+				position: absolute
+
+			label
+				color: $color_grey
+				cursor: pointer
+				margin-left: 30px
+
+				&.selected
+					color: $color_almost_black
+
 #questions-table
 	text-align: center
 
 	table
 		text-align: left
 		width: 100%
+		border-collapse: collapse
 
 		thead
-			@include default-box-shadow()
 
 			td
+				padding-bottom: 0 !important
 				color: $color_grey
 				text-align: center
 
@@ -73,6 +102,10 @@ body
 
 				&.question-text
 					width: 215px
+					height: 6em
+
+#bottom
+	text-align: center
 
 	button[name=start]
 		@include default-box-shadow()
@@ -81,7 +114,7 @@ body
 		margin: 18px 20px 34px
 		padding: 16px 45px
 		background-color: white
-		border: 1px $color_border_grey solid
+		border: 1px solid $color_border_grey
 		font-size: 22px
 		color: $color_almost_black
 

@@ -41,7 +41,6 @@ define([
 		clickCheckBox: function(evt) {
 			var $t = this.$(evt.target);
 			$t.toggleClass('selected');
-			// trigger select event
 			this.trigger('answer-weight-toggle', $t.hasClass('selected'));
 		}
 

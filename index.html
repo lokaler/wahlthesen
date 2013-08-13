@@ -33,25 +33,39 @@
 	</div>
 
 	<script type="text/template" id="template-main">
+		<div id="filter"></div>
 		<div id="questions-table"></div>
-		<div id="start-button"></div>
+		<div id="bottom"></div>
 	</script>
 
-	<script type="text/template" id="template-question-table">
+	<script type="text/template" id="template-questions-filter">
+		<div class="filter">
+			<div class="checkbox <%= average %>" id="filter-average"></div><label class="<%= average %>">Durchschnitt</label>
+		</div>
+		<div class="filter">
+			<div class="checkbox <%= abgeordnete %>" id="filter-abgeordnete"></div><label class="<%= abgeordnete %>">Abgeordnete</label>
+		</div>
+		<div class="filter">
+			<div class="checkbox <%= user %>" id="filter-user"></div><label class="<%= user %>">Ihre Meinung</label>
+		</div>
+	</script>
+
+	<script type="text/template" id="template-questions-table">
 		<table>
 			<thead>
-				<td>&nbsp;</td>
-				<td>Ich stimme<br />absolut nicht zu</td>
-				<td>Ich stimme<br />eher nicht zu</td>
-				<td>Ich bin<br />unentschieden</td>
-				<td>Ich stimme<br />eher zu</td>
-				<td>Ich stimme<br />absolut zu</td>
-				<td>These doppelt<br />gewichten</td>
+				<tr>
+					<td>&nbsp;</td>
+					<td>Ich stimme<br />absolut nicht zu</td>
+					<td>Ich stimme<br />eher nicht zu</td>
+					<td>Ich bin<br />unentschieden</td>
+					<td>Ich stimme<br />eher zu</td>
+					<td>Ich stimme<br />absolut zu</td>
+					<td>These doppelt<br />gewichten</td>
+				</tr>
 			</thead>
 			<tbody>
 			</tbody>
 		</table>
-		<button name="start">Jetzt auswerten</button>
 	</script>
 
 	<script type="text/template" id="template-question">
@@ -62,6 +76,10 @@
 		<td><div class="radio-button"></div></td>
 		<td><div class="radio-button"></div></td>
 		<td><div class="checkbox"></div></td>
+	</script>
+
+	<script type="text/template" id="template-bottom">
+		<button name="start">Jetzt auswerten</button>
 	</script>
 
 	<script data-main="app/require-config" src="/lib/require.js"></script>

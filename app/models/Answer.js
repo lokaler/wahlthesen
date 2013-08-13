@@ -14,8 +14,9 @@ define([
 
 		defaults: {
 			question_id: undefined,
-			value: 0,
-			double_weight: false
+			value: undefined,
+			double_weight: false,
+			note: undefined
 		},
 
 		initialize: function(question_id) {

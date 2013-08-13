@@ -4,10 +4,15 @@ require([
 
 	'models/Question',
 	'models/Answer',
+	'models/QuestionsFilter',
+	'models/Abgeordnete',
+
 	'collections/Questions',
 	'collections/Answers',
 
-	'views/QuestionsView'
+	'views/QuestionsView',
+	'views/QuestionsFilterView',
+	'views/BottomView'
 
 ], function(
 
@@ -15,19 +20,27 @@ require([
 
 	Question,
 	Answer,
+	QuestionsFilter,
+	Abgeordnete,
+
 	Questions,
 	Answers,
 
-	QuestionsView
+	QuestionsView,
+	QuestionsFilterView,
+	BottomView
 
 ) {
 
 	function do_analysis() {
 		if (App.data.questions) {
-			console.log('START ANALYSIS');
-			// App.data.questions.each(function(q, i) {
-			// 	console.log(q);
-			// });
+			var questions_filter = new QuestionsFilterView({
+				model: App.data.questions_filter
+			});
+			App.layout.region_filter.show(questions_filter);
+			App.listenTo(questions_filter, 'filter-toggle', function(model, field, value) {
+				model.set(field, value);
+			});
 		}
 	}
 
@@ -51,12 +64,22 @@ require([
 			App.data.user_answers.add(new Answer(q.id));
 		});
 	});
+	App.data.questions_filter = new QuestionsFilter();
+	App.data.abgeordnete = new Abgeordnete();
+	App.data.abgeordnete.load();
 
 	// question table
-	var question_table = new QuestionsView({ collection: App.data.questions });
-	App.layout.region_table.show(question_table);
-	App.listenTo(question_table, 'start', do_analysis);
-	App.listenTo(question_table, 'itemview:answer-select', answer_select);
-	App.listenTo(question_table, 'itemview:answer-weight-toggle', answer_weight_toggle);
+	var questions_table = new QuestionsView({ collection: App.data.questions });
+	App.layout.region_table.show(questions_table);
+	App.listenTo(questions_table, 'itemview:answer-select', answer_select);
+	App.listenTo(questions_table, 'itemview:answer-weight-toggle', answer_weight_toggle);
+
+	// bottom
+	var bottom_view = new BottomView();
+	App.layout.region_bottom.show(bottom_view);
+	App.listenToOnce(bottom_view, 'start', function() {
+		App.layout.region_bottom.close();
+		do_analysis();
+	});
 
 });
