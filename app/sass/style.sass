@@ -1,32 +1,32 @@
 @import "compass/css3"
 
-$color_almost_black: #333
-$color_grey: #888
-$color_border_grey: #d1d1d1
-$color_bg_grey: #f4f3f0
-$color_shadow: lighten($color_grey, 30%)
+$color-almost-black: #333
+$color-grey: #888
+$color-border-grey: #d1d1d1
+$color-bg-grey: #f4f3f0
+$color-shadow: lighten($color-grey, 30%)
 
 // parteien
-$color_gruene: #1ab647
-$color_spd: #fc1116
-$color_linke: #df2bd7
-$color_cdu: #333
-$color_csu: #0052b9
-$color_fdp: #f4c800
-$color_piraten: #fe8715
-$color_fw: #03b1fb
+$color-gruene: #1ab647
+$color-spd: #fc1116
+$color-linke: #df2bd7
+$color-cdu: #333
+$color-csu: #0052b9
+$color-fdp: #f4c800
+$color-piraten: #fe8715
+$color-fw: #03b1fb
+
+$total-width: 940px
+$questions-height: 700px
 
 @mixin default-box-shadow
-	@include box-shadow($color_shadow 4px 4px 4px)
-
-@mixin default-box-shadow-bottom
-	@include box-shadow($color_shadow 0 4px 4px)
+	@include box-shadow($color-shadow 4px 4px 4px)
 
 body
 	padding: 0
 	margin: 0
 	font-family: SZSansRegular
-	color: $color_almost_black
+	color: $color-almost-black
 
 	#pagewrap
 		width: 940px
@@ -45,7 +45,7 @@ body
 					height: 8px
 
 					&.black
-						background-color: $color_almost_black
+						background-color: $color-almost-black
 					&.red
 						background-color: #fc1116
 					&.yellow
@@ -56,8 +56,8 @@ body
 
 	> div
 
-		border-top: 1px solid $color_border_grey
-		border-bottom: 1px solid $color_border_grey
+		border-top: 1px solid $color-border-grey
+		border-bottom: 1px solid $color-border-grey
 		height: 34px
 
 		.filter
@@ -70,39 +70,59 @@ body
 				position: absolute
 
 			label
-				color: $color_grey
+				color: $color-grey
 				cursor: pointer
 				margin-left: 30px
 
 				&.selected
-					color: $color_almost_black
+					color: $color-almost-black
 
 #questions-table
+
+	$cell-padding: 16px
+	$first-col-width: 215px
+	$first-col-width-resulting: $first-col-width - 2 * $cell-padding
+	$col-width: ($total-width - $first-col-width) / 6  - 2 * $cell-padding
+
+	width: $total-width
 	text-align: center
 
-	table
-		text-align: left
-		width: 100%
-		border-collapse: collapse
+	#questions-table-header-wrapper
 
-		thead
-
-			td
-				padding-bottom: 0 !important
-				color: $color_grey
-				text-align: center
-
-		tr
-
-			&:nth-child(even)
-				background-color: $color_bg_grey
+		table#questions-table-header
+			width: $total-width
+			border-collapse: collapse
 
 			td
-				padding: 16px 16px
+				width: $col-width
+				padding: $cell-padding $cell-padding
+				color: $color-grey
 
-				&.question-text
-					width: 215px
+				&:nth-child(1)
+					width: $first-col-width-resulting !important
+
+	#questions-table-rows-wrapper
+		height: $questions-height
+		overflow-x: hidden
+		overflow-y: scroll
+
+		table#questions-table-rows
+			width: $total-width
+			border-collapse: collapse
+
+			tr
+
+				&:nth-child(even)
+					background-color: $color-bg-grey
+
+				td
+					width: $col-width
+					padding: $cell-padding $cell-padding
 					height: 6em
+
+					&:nth-child(1)
+						text-align: left
+						width: $first-col-width-resulting
 
 #bottom
 	text-align: center
@@ -114,12 +134,12 @@ body
 		margin: 18px 20px 34px
 		padding: 16px 45px
 		background-color: white
-		border: 1px solid $color_border_grey
+		border: 1px solid $color-border-grey
 		font-size: 22px
-		color: $color_almost_black
+		color: $color-almost-black
 
 		&:hover
-			background-color: $color_bg_grey
+			background-color: $color-bg-grey
 
 .radio-button
 	width: 22px
