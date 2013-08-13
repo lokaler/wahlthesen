@@ -7,7 +7,7 @@ import json
 
 
 resp = open('wahlthesen.csv', 'rb')
-# resp = urllib2.urlopen('https://docs.google.com/spreadsheet/pub?key=0AvGg4dcjWJP8dE1kNkJHU3UwaWlDcGhneDNITm5SZlE&output=csv')
+#resp = urllib2.urlopen('https://docs.google.com/spreadsheet/pub?key=0AvGg4dcjWJP8dE1kNkJHU3UwaWlDcGhneDNITm5SZlE&output=csv')
 reader = csv.reader(resp)
 
 questions = []
@@ -40,14 +40,15 @@ for row in reader:
 
     # data
     else:
-	a = {}
+	answers = {}
+	notes = {}
         for i in xrange(1, 70, 2):
 	    answer_idx = i / 2
-	    a[answer_idx] = answer2num(row[i])
+	    answers[answer_idx] = answer2num(row[i])
 	    note = row[i + 1].strip()
 	    if len(note) > 0:
-		a['%i_note' % answer_idx] = note
-	answer_sets.append([
+		notes[answer_idx] = note
+	answer_set = [
 	    # partei
 	    row[0],
 	    # bundesland
@@ -55,8 +56,11 @@ for row in reader:
 	    # gender
 	    row[71] == 'weiblich' and 'w' or 'm',
 	    # answers
-	    a
-	])
+	    answers
+	]
+	if len(notes) > 0:
+	    answer_set.append(notes)
+	answer_sets.append(answer_set)
 
     rownum += 1
 
