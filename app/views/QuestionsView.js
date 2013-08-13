@@ -19,7 +19,11 @@ define([
 
 		itemViewContainer: 'tbody',
 		template: '#template-question-table',
-		itemView: QuestionView
+		itemView: QuestionView,
+
+		triggers: {
+			'click button[name=start]': 'start'
+		}
 
 	});
 

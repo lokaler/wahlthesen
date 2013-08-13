@@ -26,7 +26,7 @@ define([
 		var AppLayout = Backbone.Marionette.Layout.extend({
 			template: '#template-main',
 			regions: {
-				region_table: '#questions-table'
+				region_table:        '#questions-table'
 			}
 		});
 

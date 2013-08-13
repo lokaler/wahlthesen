@@ -1,6 +1,7 @@
 /doc
 /dist
 /node_modules
+/app/styles/style.css
 .sass-cache
 *~
 .DS_Store

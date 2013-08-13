@@ -1,5 +1,10 @@
+@import "compass/css3"
+
+$color_almost_black: #333
 $color_grey: #888
-$bg_grey: #f4f3f0
+$color_border_grey: #d1d1d1
+$color_bg_grey: #f4f3f0
+$color_shadow: lighten($color_grey, 30%)
 
 // parteien
 $color_gruene: #1ab647
@@ -11,10 +16,14 @@ $color_fdp: #f4c800
 $color_piraten: #fe8715
 $color_fw: #03b1fb
 
+@mixin default-box-shadow
+	@include box-shadow($color_shadow 4px 4px 4px)
+
 body
 	padding: 0
 	margin: 0
 	font-family: SZSansRegular
+	color: $color_almost_black
 
 	#pagewrap
 		width: 940px
@@ -33,7 +42,7 @@ body
 					height: 8px
 
 					&.black
-						background-color: #333
+						background-color: $color_almost_black
 					&.red
 						background-color: #fc1116
 					&.yellow
@@ -41,11 +50,14 @@ body
 						background-color: #f4c800
 
 #questions-table
+	text-align: center
 
 	table
+		text-align: left
 		width: 100%
 
 		thead
+			@include default-box-shadow()
 
 			td
 				color: $color_grey
@@ -54,13 +66,27 @@ body
 		tr
 
 			&:nth-child(even)
-				background-color: $bg_grey
+				background-color: $color_bg_grey
 
 			td
 				padding: 16px 16px
 
 				&.question-text
 					width: 215px
+
+	button[name=start]
+		@include default-box-shadow()
+		cursor: pointer
+		font-family: SZSansBold
+		margin: 18px 20px 34px
+		padding: 16px 45px
+		background-color: white
+		border: 1px $color_border_grey solid
+		font-size: 22px
+		color: $color_almost_black
+
+		&:hover
+			background-color: $color_bg_grey
 
 .radio-button
 	width: 22px

@@ -26,4 +26,9 @@ require([
 	});
 	App.layout.region_table.show(question_table);
 
+	App.listenTo(question_table, 'start', function() {
+		console.log('ANALYSIS START!');
+	});
+
+
 });

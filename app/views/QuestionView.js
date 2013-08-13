@@ -34,7 +34,7 @@ define([
 
 		clickCheckBox: function(evt) {
 			this.$(evt.target).toggleClass('selected');
-		},
+		}
 
 	});
 
