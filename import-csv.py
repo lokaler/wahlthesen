@@ -31,11 +31,17 @@ for row in reader:
     # header
     if rownum == 0:
 	colnum = 0
+	_id = 0
+	# questions
 	for col in row:
 	    if colnum != 0:
 		r = re.match(r'^\d+\. (.+)$', col)
 		if (r):
-		    questions.append({ 'text': r.group(1) })
+		    questions.append({
+			    'id': _id,
+			    'text': r.group(1),
+			    })
+		    _id += 1
 	    colnum += 1
 
     # data

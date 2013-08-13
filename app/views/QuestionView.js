@@ -22,18 +22,27 @@ define([
 		},
 
 		clickRadioButton: function(evt) {
-			var $t = this.$(evt.target);
+			var $t = this.$(evt.target), $radio_buttons = this.$('.radio-button'),
+			  answer_idx = 0;
+			// unselect
 			if ($t.hasClass('selected')) {
 				$t.removeClass('selected');
 			}
+			// select
 			else {
-				this.$('.radio-button').removeClass('selected');
+				$radio_buttons.removeClass('selected');
 				$t.addClass('selected');
+				answer_idx = $radio_buttons.index($t) + 1;
 			}
+			// trigger select event
+			this.trigger('answer-select', answer_idx);
 		},
 
 		clickCheckBox: function(evt) {
-			this.$(evt.target).toggleClass('selected');
+			var $t = this.$(evt.target);
+			$t.toggleClass('selected');
+			// trigger select event
+			this.trigger('answer-weight-toggle', $t.hasClass('selected'));
 		}
 
 	});

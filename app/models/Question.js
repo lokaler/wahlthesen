@@ -13,6 +13,7 @@ define([
 	var Question = Backbone.Model.extend({
 
 		defaults: {
+			id: undefined,
 			text: undefined
 		}
 
