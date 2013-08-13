@@ -1,0 +1,83 @@
+$color_grey: #888
+$bg_grey: #f4f3f0
+
+// parteien
+$color_gruene: #1ab647
+$color_spd: #fc1116
+$color_linke: #df2bd7
+$color_cdu: #333
+$color_csu: #0052b9
+$color_fdp: #f4c800
+$color_piraten: #fe8715
+$color_fw: #03b1fb
+
+body
+	padding: 0
+	margin: 0
+	font-family: SZSansRegular
+
+	#pagewrap
+		width: 940px
+
+		#topbar
+			width: 100%
+			height: 46px
+
+			#topinfo
+				height: 36px
+
+			#topcolors
+				> div
+					float: left
+					width: 33%
+					height: 8px
+
+					&.black
+						background-color: #333
+					&.red
+						background-color: #fc1116
+					&.yellow
+						width: 34%
+						background-color: #f4c800
+
+#questions-table
+
+	table
+		width: 100%
+
+		thead
+
+			td
+				color: $color_grey
+				text-align: center
+
+		tr
+
+			&:nth-child(even)
+				background-color: $bg_grey
+
+			td
+				padding: 16px 16px
+
+				&.question-text
+					width: 215px
+
+.radio-button
+	width: 22px
+	height: 23px
+	margin: 0 auto
+	background-image: url(images/radio-button.png)
+	cursor: pointer
+
+	&.selected
+		background-image: url(images/radio-button-selected.png)
+
+.checkbox
+	width: 18px
+	height: 19px
+	margin: 0 auto
+	background-image: url(images/checkbox.png)
+	cursor: pointer
+
+	&.selected
+		background-image: url(images/checkbox-selected.png)
