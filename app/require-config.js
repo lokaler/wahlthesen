@@ -8,7 +8,9 @@ require.config({
 		'backbone':              '../lib/backbone/backbone',
 		'backbone.marionette':   '../lib/backbone/backbone.marionette.1.0.4/core/amd/backbone.marionette',
 		'backbone.wreqr':        '../lib/backbone/backbone.marionette.1.0.4/backbone.wreqr',
-		'backbone.babysitter':   '../lib/backbone/backbone.marionette.1.0.4/backbone.babysitter'
+		'backbone.babysitter':   '../lib/backbone/backbone.marionette.1.0.4/backbone.babysitter',
+		
+		"text": "../lib/require-plugins/text",
 	},
 
 	map: {
