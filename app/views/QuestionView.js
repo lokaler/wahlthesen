@@ -35,7 +35,7 @@ define([
 				answer_idx = $radio_buttons.index($t) + 1;
 			}
 			// trigger select event
-			this.trigger('answer-select', answer_idx);
+			this.trigger('answer-select', answer_idx, evt.target);
 		},
 
 		clickCheckBox: function(evt) {
