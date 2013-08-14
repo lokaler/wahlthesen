@@ -2,15 +2,10 @@ define([
 
 	'jquery',
 	'underscore',
-	'bbloader'
+	'bbloader',
+	'proto'
 
 ], function($, _, Backbone) {
-
-	// String proto
-	String.prototype.format = function() {
-		var args = Array.prototype.slice.call(arguments);
-		return underscore_string.sprintf.apply(null, [this].concat(args));
-	};
 
 	App = new Backbone.Marionette.Application();
 	App.root = '/';
