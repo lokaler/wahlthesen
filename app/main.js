@@ -1,46 +1,63 @@
 require([
 
 	'app',
+	'names',
 
 	'models/Question',
 	'models/Answer',
 	'models/QuestionsFilter',
 	'models/Abgeordnete',
+	'models/Result',
 
 	'collections/Questions',
 	'collections/Answers',
 
 	'views/QuestionsView',
 	'views/QuestionsFilterView',
+	'views/ResultView',
 	'views/BottomView'
 
 ], function(
 
 	App,
+	__unused__,
 
 	Question,
 	Answer,
 	QuestionsFilter,
 	Abgeordnete,
+	Result,
 
 	Questions,
 	Answers,
 
 	QuestionsView,
 	QuestionsFilterView,
+	ResultView,
 	BottomView
 
 ) {
 
+	function show_filter() {
+		var questions_filter = new QuestionsFilterView({
+			model: App.data.questions_filter
+		});
+		App.layout.region_filter.show(questions_filter);
+		App.listenTo(questions_filter, 'filter-toggle', function(model, field, value) {
+			model.set(field, value);
+		});
+	}
+
+	function show_results() {
+		var result_view = new ResultView({ model: App.data.result });
+		App.layout.region_result.show(result_view);
+	}
+
 	function do_analysis() {
 		if (App.data.questions) {
-			var questions_filter = new QuestionsFilterView({
-				model: App.data.questions_filter
-			});
-			App.layout.region_filter.show(questions_filter);
-			App.listenTo(questions_filter, 'filter-toggle', function(model, field, value) {
-				model.set(field, value);
-			});
+			// show_filter();
+			App.data.result = new Result(App.data.user_answers, App.data.abgeordnete);
+			show_results();
 		}
 	}
 
@@ -55,7 +72,6 @@ require([
 	App.start();
 
 	// init app data
-	App.data = {};
 	App.data.questions = new Questions();
 	App.data.questions.fetch({ reset: true });
 	App.listenToOnce(App.data.questions, 'reset', function() {

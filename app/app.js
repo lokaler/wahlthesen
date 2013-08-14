@@ -10,6 +10,7 @@ define([
 
 	App = new Backbone.Marionette.Application();
 	App.root = '/';
+	App.data = {};
 	App.addRegions({
 		region_main: '#main'
 	});
@@ -22,6 +23,7 @@ define([
 		var AppLayout = Backbone.Marionette.Layout.extend({
 			template: _.template(template_main),
 			regions: {
+				region_result: '#result',
 				region_filter: '#filter',
 				region_table:  '#questions-table',
 				region_bottom: '#bottom'
