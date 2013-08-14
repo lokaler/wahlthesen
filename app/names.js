@@ -11,7 +11,7 @@ require([
 	App.data.names = {
 
 		parteien: {
-			gruene:  'B’90/Grüne',
+			gruene:  'Grüne',
 			spd:     'SPD',
 			linke:   'Linke',
 			cdu:     'CDU',

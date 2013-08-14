@@ -28,8 +28,7 @@ define([
 		calculate: function() {
 			var that = this;
 			_.each(App.data.names.parteien, function(v, k) {
-				console.info('Calculating %s'.format(k));
-				that.set(k, 78);
+				that.set(k, Math.floor(Math.random() * 99));
 			});
 		}
 

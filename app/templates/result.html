@@ -2,9 +2,9 @@
 	<div class="label">
 		Höchste Übereinstimmung
 	</div>
-	<div class="result gruene">
-		<span class="party">Grüne</span>
-		<span class="value">70%</span>
+	<div class="result <%= main.class %>">
+		<span class="party"><%= main.name %></span>
+		<span class="value"><%= main.value %>%</span>
 	</div>
 </div>
 <div id="other-values">
@@ -12,19 +12,9 @@
 		Abweichungen zwischen Ihren Antworten und denen der Abgeordneten
 	</div>
 	<div class="result">
-		<span class="party spd">SPD:</span>
-		<span class="value spd">15%</span>
-		<span class="party linke">Linke:</span>
-		<span class="value linke">15%</span>
-		<span class="party cdu">CDU:</span>
-		<span class="value cdu">15%</span>
-		<span class="party csu">CSU:</span>
-		<span class="value csu">15%</span>
-		<span class="party fdp">FDP:</span>
-		<span class="value fdp">15%</span>
-		<span class="party piraten">Piraten:</span>
-		<span class="value piraten">15%</span>
-		<span class="party fw">Freie Wähler:</span>
-		<span class="value fw">15%</span>
+		<% for (var i = 0; i < others.length; ++i) { var p = others[i]; %>
+			<span class="party <%= p.class %>"><%= p.name %></span>
+			<span class="value <%= p.class %>"><%= p.value %>%</span>
+		<% } %>
 	</div>
 </div>
