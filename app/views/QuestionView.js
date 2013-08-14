@@ -2,19 +2,21 @@ define([
 
 	'app',
 	'lodash',
-	'bbloader'
+	'bbloader',
+	'text!templates/question.html'
 
 ], function (
 	app,
 	_,
-	Backbone
+	Backbone,
+	template_question
 
 ) {
 
 	var QuestionView = Backbone.Marionette.ItemView.extend({
 
 		tagName:  'tr',
-		template: '#template-question',
+		template: _.template(template_question),
 
 		events: {
 			'click .radio-button': 'clickRadioButton',

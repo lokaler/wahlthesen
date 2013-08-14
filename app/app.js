@@ -3,9 +3,10 @@ define([
 	'jquery',
 	'underscore',
 	'bbloader',
-	'proto'
+	'proto',
+	'text!templates/main.html'	
 
-], function($, _, Backbone) {
+], function($, _, Backbone, proto, template_main) {
 
 	App = new Backbone.Marionette.Application();
 	App.root = '/';
@@ -19,7 +20,7 @@ define([
 
 	App.initAppLayout = function() {
 		var AppLayout = Backbone.Marionette.Layout.extend({
-			template: '#template-main',
+			template: _.template(template_main),
 			regions: {
 				region_filter: '#filter',
 				region_table:  '#questions-table',

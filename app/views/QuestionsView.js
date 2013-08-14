@@ -4,7 +4,8 @@ define([
 	'lodash',
 	'bbloader',
 
-	'views/QuestionView'
+	'views/QuestionView',
+	'text!templates/questions-table.html'
 
 ], function (
 
@@ -12,7 +13,8 @@ define([
 	_,
 	Backbone,
 
-	QuestionView
+	QuestionView,
+	template_questions_table
 
 ) {
 
@@ -20,7 +22,7 @@ define([
 
 		itemView:          QuestionView,
 		itemViewContainer: '#questions-table-rows tbody',
-		template:          '#template-questions-table',
+		template:          _.template(template_questions_table),
 
 		triggers: {
 			'click button[name=start]': 'start'

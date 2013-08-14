@@ -2,18 +2,20 @@ define([
 
 	'app',
 	'lodash',
-	'bbloader'
+	'bbloader',
+	'text!templates/questions-filter.html'
 
 ], function (
 	app,
 	_,
-	Backbone
+	Backbone,
+	template_questions_filter
 
 ) {
 
 	var QuestionsFilterView = Backbone.Marionette.ItemView.extend({
 
-		template: '#template-questions-filter',
+		template: _.template(template_questions_filter),
 
 		serializeData: function() {
 			var r = {};

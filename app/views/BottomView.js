@@ -2,19 +2,21 @@ define([
 
 	'app',
 	'lodash',
-	'bbloader'
+	'bbloader',
+	'text!templates/bottom.html'
 
 ], function (
 
 	app,
 	_,
-	Backbone
+	Backbone,
+	template_bottom
 
 ) {
 
 	var BottomView = Backbone.Marionette.CompositeView.extend({
 
-		template: '#template-bottom',
+		template: _.template(template_bottom),
 
 		triggers: {
 			'click button[name=start]': 'start'
