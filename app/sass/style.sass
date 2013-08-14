@@ -18,6 +18,8 @@ $color-fw: #03b1fb
 
 $total-width: 940px
 $questions-height: 700px
+$first-col-width: 220px
+$default-padding: 16px
 
 @mixin default-box-shadow
 	@include box-shadow($color-shadow 4px 4px 4px)
@@ -79,10 +81,8 @@ body
 
 #questions-table
 
-	$cell-padding: 16px
-	$first-col-width: 215px
-	$first-col-width-resulting: $first-col-width - 2 * $cell-padding
-	$col-width: ($total-width - $first-col-width) / 6  - 2 * $cell-padding
+	$first-col-width-resulting: $first-col-width - 2 * $default-padding
+	$col-width: ($total-width - $first-col-width) / 6  - 2 * $default-padding
 
 	width: $total-width
 	text-align: center
@@ -95,7 +95,7 @@ body
 
 			td
 				width: $col-width
-				padding: $cell-padding $cell-padding
+				padding: $default-padding $default-padding
 				color: $color-grey
 
 				&:nth-child(1)
@@ -117,7 +117,7 @@ body
 
 				td
 					width: $col-width
-					padding: $cell-padding $cell-padding
+					padding: $default-padding $default-padding
 					height: 6em
 
 					&:nth-child(1)
@@ -160,3 +160,60 @@ body
 
 	&.selected
 		background-image: url(images/checkbox-selected.png)
+
+#result
+
+	$border-width: 3px
+
+	color: $color-grey
+	margin: 20px 0
+
+	> div > div
+		float: left
+		padding: $default-padding
+
+		.result, .party, .value
+
+			&.gruene
+				color: $color-gruene
+			&.spd
+				color: $color-spd
+			&.linke
+				color: $color-linke
+			&.cdu
+				color: $color-cdu
+			&.csu
+				color: $color-csu
+			&.fdp
+				color: $color-fdp
+			&.piraten
+				color: $color-piraten
+			&.fw
+				color: $color-fw
+
+	#main-value
+		width: $first-col-width - 2 * $default-padding
+		border-right: $color-border-grey solid $border-width
+		text-align: center
+
+		.label
+			margin-bottom: 6px
+
+		.result
+			font-family: SZSansBold
+			font-size: 38px
+
+	#other-values
+		width: $total-width - $first-col-width - 2 * $default-padding - $border-width
+
+		.label
+			margin-bottom: 20px
+
+		.result
+			font-size: 18px
+
+			.label
+				margin-bottom: 22px
+
+			.value
+				margin-right: 10px
