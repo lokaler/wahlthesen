@@ -1,30 +1,10 @@
 @font-face {
 	font-family:SZSansRegular;
-	src:url('http://www.sueddeutsche.de/staticassets/fonts/sz-sans/SZSans.eot?r=f50626789a');
-	src:url('http://www.sueddeutsche.de/staticassets/fonts/sz-sans/SZSans.eot?r=f50626789a#iefix') format('eot'),url('http://www.sueddeutsche.de/staticassets/fonts/sz-sans/SZSans.woff?r=84018410c4') format('woff'),url('http://www.sueddeutsche.de/staticassets/fonts/sz-sans/SZSans.otf?r=7cc2496a8d') format('opentype')
+	src:url('fonts/SZSans.eot');
+	src:url('fonts/SZSans.eot#iefix') format('eot'),url('fonts/SZSans.woff') format('woff'),url('fonts/SZSans.otf') format('opentype')
 }
 @font-face {
 	font-family:SZSansBold;
-	src:url('http://www.sueddeutsche.de/staticassets/fonts/sz-sans/SZSans-Bold.eot?r=5d9e70f6d9');
-	src:url('http://www.sueddeutsche.de/staticassets/fonts/sz-sans/SZSans-Bold.eot?r=5d9e70f6d9#iefix') format('eot'),url('http://www.sueddeutsche.de/staticassets/fonts/sz-sans/SZSans-Bold.woff?r=50049b0907') format('woff'),url('http://www.sueddeutsche.de/staticassets/fonts/sz-sans/SZSans-Bold.otf?r=0f5e976100') format('opentype')
-}
-@font-face {
-	font-family:SZSansItalic;
-	src:url('http://www.sueddeutsche.de/staticassets/fonts/sz-sans/SZSans-Italic.eot?r=7fa74cd412');
-	src:url('http://www.sueddeutsche.de/staticassets/fonts/sz-sans/SZSans-Italic.eot?r=7fa74cd412#iefix') format('eot'),url('http://www.sueddeutsche.de/staticassets/fonts/sz-sans/SZSans-Italic.woff?r=0f692b43f0') format('woff'),url('http://www.sueddeutsche.de/staticassets/fonts/sz-sans/SZSans-Italic.otf?r=c86f15af1e') format('opentype')
-}
-@font-face {
-	font-family:SZTextRegular;
-	src:url('http://www.sueddeutsche.de/staticassets/fonts/sz-text/SZText.eot?r=ec4eed278b');
-	src:url('http://www.sueddeutsche.de/staticassets/fonts/sz-text/SZText.eot?r=ec4eed278b#iefix') format('eot'),url('http://www.sueddeutsche.de/staticassets/fonts/sz-text/SZText.woff?r=08918c7fe9') format('woff'),url('http://www.sueddeutsche.de/staticassets/fonts/sz-text/SZText.otf?r=38aa01f964') format('opentype')
-}
-@font-face {
-	font-family:SZTextBold;
-	src:url('http://www.sueddeutsche.de/staticassets/fonts/sz-text/SZText-Bold.eot?r=e67ea10793');
-	src:url('http://www.sueddeutsche.de/staticassets/fonts/sz-text/SZText-Bold.eot?r=e67ea10793#iefix') format('eot'),url('http://www.sueddeutsche.de/staticassets/fonts/sz-text/SZText-Bold.woff?r=5b8507761c') format('woff'),url('http://www.sueddeutsche.de/staticassets/fonts/sz-text/SZText-Bold.otf?r=6b64d25daf') format('opentype')
-}
-@font-face {
-	font-family:SZTextItalic;
-	src:url('http://www.sueddeutsche.de/staticassets/fonts/sz-text/SZText-Italic.eot?r=dee308141a');
-	src:url('http://www.sueddeutsche.de/staticassets/fonts/sz-text/SZText-Italic.eot?r=dee308141a#iefix') format('eot'),url('http://www.sueddeutsche.de/staticassets/fonts/sz-text/SZText-Italic.woff?r=8a9da5e38c') format('woff'),url('http://www.sueddeutsche.de/staticassets/fonts/sz-text/SZText-Italic.otf?r=5419f2246f') format('opentype')
+	src:url('fonts/SZSans-Bold.eot');
+	src:url('fonts/SZSans-Bold.eot#iefix') format('eot'),url('fonts/SZSans-Bold.woff') format('woff'),url('fonts/SZSans-Bold.otf') format('opentype')
 }
