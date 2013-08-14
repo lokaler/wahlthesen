@@ -2,6 +2,8 @@ require([
 
 	'app',
 
+	'modules/devtools/Module',
+
 	'models/Question',
 	'models/Answer',
 	'models/QuestionsFilter',
@@ -18,6 +20,8 @@ require([
 
 	App,
 
+	DevtoolsModule,
+
 	Question,
 	Answer,
 	QuestionsFilter,
@@ -31,6 +35,8 @@ require([
 	BottomView
 
 ) {
+
+	App.modules = {};
 
 	function do_analysis() {
 		if (App.data.questions) {
@@ -52,6 +58,10 @@ require([
 		App.data.user_answers.at(view.model.id).set('double_weight', value);
 	}
 
+	App.addInitializer(function() {
+		App.modules.devtools = new DevtoolsModule();
+	});
+		
 	App.start();
 
 	// init app data

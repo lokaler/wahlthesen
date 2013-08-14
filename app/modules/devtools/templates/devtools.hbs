@@ -1,0 +1,30 @@
+<span class="btn-open icon-expand-alt">+</span>
+<div class="content">
+
+	<span class="btn-close icon-remove">x</span>
+	
+	<div class="separator"/>
+
+	<div class="inputs">
+		{{# each inputs }}
+	
+			{{# if is_button }}
+				<button
+					name="{{ name }}"
+				>
+					{{ name }}
+				</button>
+			{{/ if }}
+
+			{{# if is_checkbox }}
+				<input
+					type="checkbox"
+					name="{{ name }}"
+					{{# if checked }}checked="checked"{{/ if }}
+				>{{ name }}
+			{{/ if }}
+
+		{{/ each }}
+	</div>
+
+</div>

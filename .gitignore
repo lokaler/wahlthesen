@@ -2,6 +2,7 @@
 /dist
 /node_modules
 /app/styles/style.css
+/app/styles/compiled
 .sass-cache
 *~
 .DS_Store
