@@ -33,10 +33,11 @@ define([
 		},
 
 		scrollToNextAnswer: function(view, answer_idx, target) {
-			var $scroller = this.$('#questions-table-rows-wrapper');
 			var $next_row = this.$(target).parent().parent().next();
-			var next_row_bottom_pos = ($next_row.position().top - $scroller.position().top)
-				+ $next_row.height() + $scroller.scrollTop();
+			if ($next_row.length == 0)
+				return;
+			var $scroller = this.$('#questions-table-rows-wrapper');
+			var next_row_bottom_pos = $next_row.position().top + $next_row.height() + $scroller.scrollTop();
 			var scroll_bottom = $scroller.height() + $scroller.scrollTop();
 			if (next_row_bottom_pos > scroll_bottom)
 				$scroller.animate({ scrollTop: next_row_bottom_pos - $scroller.height() }, 200);
@@ -44,6 +45,10 @@ define([
 
 		onRender: function() {
 			this.on('itemview:answer-select', this.scrollToNextAnswer);
+		},
+
+		showAverages: function() {
+			this.children.each(function(v) { v.showAllAverages(); });
 		}
 
 	});

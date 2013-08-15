@@ -61,11 +61,16 @@ require([
 		App.layout.region_result.show(result_view);
 	}
 
+	function show_all_averages() {
+		App.layout.region_table.currentView.showAverages();
+	}
+
 	function do_analysis() {
 		if (App.data.questions) {
 			// show_filter();
 			App.data.result = new Result(App.data.user_answers, App.data.abgeordnete);
 			show_results();
+			show_all_averages();
 		}
 	}
 

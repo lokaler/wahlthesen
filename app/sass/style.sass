@@ -24,6 +24,23 @@ $default-padding: 16px
 @mixin default-box-shadow
 	@include box-shadow($color-shadow 4px 4px 4px)
 
+.gruene
+	color: $color-gruene
+.spd
+	color: $color-spd
+.linke
+	color: $color-linke
+.cdu
+	color: $color-cdu
+.csu
+	color: $color-csu
+.fdp
+	color: $color-fdp
+.piraten
+	color: $color-piraten
+.fw
+	color: $color-fw
+
 body
 	padding: 0
 	margin: 0
@@ -84,7 +101,7 @@ body
 
 	$first-col-width-resulting: $first-col-width - $default-padding
 	$col-width: ($total-width - $first-col-width) / 6
-	$row-height: 8rem
+	$row-height: 7rem
 
 	width: $total-width
 	text-align: center
@@ -105,6 +122,7 @@ body
 				width: $first-col-width-resulting + $default-padding !important
 
 	#questions-table-rows-wrapper
+		position: relative
 		height: $questions-height
 		overflow-x: hidden
 		overflow-y: scroll
@@ -134,6 +152,18 @@ body
 
 				.cell
 					width: $col-width
+
+				.overlay
+					position: absolute
+					width: auto
+					height: auto
+					margin-left: -$total-width
+
+					> .party-avg
+						top: 49px
+						display: none
+						position: absolute
+						cursor: default
 
 #bottom
 	text-align: center
@@ -186,23 +216,6 @@ body
 		.result, .party, .value
 			white-space: nowrap
 			overflow: hidden
-
-			&.gruene
-				color: $color-gruene
-			&.spd
-				color: $color-spd
-			&.linke
-				color: $color-linke
-			&.cdu
-				color: $color-cdu
-			&.csu
-				color: $color-csu
-			&.fdp
-				color: $color-fdp
-			&.piraten
-				color: $color-piraten
-			&.fw
-				color: $color-fw
 
 	#main-value
 		width: $first-col-width - 2 * $default-padding

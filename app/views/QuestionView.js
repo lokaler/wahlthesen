@@ -7,7 +7,7 @@ define([
 
 ], function (
 
-	app,
+	App,
 	_,
 	Backbone,
 	template_question
@@ -21,8 +21,9 @@ define([
 		className: 'row',
 
 		events: {
-			'click .radio-button': 'clickRadioButton',
-			'click .checkbox':     'clickCheckBox',
+			'click .radio-button':      'clickRadioButton',
+			'click .checkbox':          'clickCheckBox',
+			'mouseenter .party-avg':    'showAvgTooltip'
 		},
 
 		clickRadioButton: function(evt) {
@@ -46,6 +47,27 @@ define([
 			var $t = this.$(evt.target);
 			$t.toggleClass('selected');
 			this.trigger('answer-weight-toggle', $t.hasClass('selected'));
+		},
+
+		showAvgHover: function() {
+			console.log('HOVER!');
+		},
+
+		showAllAverages: function() {
+			var that = this;
+			_.each(_.keys(App.data.names.parteien), function(party) {
+				that.showPartyAverage(party);
+			});
+		},
+
+		showPartyAverage: function(party) {
+			var $el = this.$('.overlay > .party-avg.%s'.format(party));
+			var avg = App.data.abgeordnete.getAveragesPerQuestion()[this.model.get('id')][party];
+			var col_width = this.$('.cell').outerWidth();
+			var center = this.$('.question').outerWidth() + col_width / 2 + 2 * col_width - $el.width() / 2 + 1;
+			var left = center + col_width * avg;
+			$el.css('left', left);
+			$el.fadeIn();
 		}
 
 	});
