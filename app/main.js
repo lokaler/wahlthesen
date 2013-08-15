@@ -4,6 +4,7 @@ require([
 	'names',
 
 	'modules/devtools/Module',
+	'modules/dialog/Module',
 
 	'models/Question',
 	'models/Answer',
@@ -25,6 +26,7 @@ require([
 	__unused__,
 
 	DevtoolsModule,
+	DialogModule,
 
 	Question,
 	Answer,
@@ -76,6 +78,7 @@ require([
 	}
 
 	App.addInitializer(function() {
+		App.modules.dialog   = new DialogModule();
 		App.modules.devtools = new DevtoolsModule();
 	});
 		

@@ -1,0 +1,52 @@
+@import "compass"
+@import "shared/colors"
+@import "shared/buttons"
+
+#dialog
+
+	> div
+
+		> *
+			position: absolute
+			width: 100%
+			height: 100%
+			top: 0
+			left: 0
+			opacity: 0
+			z-index: 0
+			pointer-events: none
+
+		#mask
+			background: $color-overlay-mask
+			+single-transition(opacity, 300ms)
+
+		div#dialog-wrapper
+			display: table
+
+			.vcenter
+				display: table-cell
+				vertical-align: middle
+
+				.controls
+					float: right
+
+					button
+						@include button-normal()
+
+				#dialog-outer
+					width: 60%
+					padding: 20px
+					background: $color-details-bg
+					box-shadow: 0 0 30px $color-grey
+					margin: 0 auto
+					position: relative
+					overflow: hidden
+					+border-radius(4px)
+					+single-box-shadow(0, 0, 30px, $color-grey)
+
+		&.visible
+
+			> *
+				opacity: 1.0
+				pointer-events: all
+				z-index: 10000

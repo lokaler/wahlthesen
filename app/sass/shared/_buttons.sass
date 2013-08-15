@@ -1,0 +1,33 @@
+@import "compass/css3"
+@import "shared/colors"
+
+$transition-time-short: 0.1s
+$border-radius-small: 2px
+
+@mixin button-normal()
+	@include single-transition(background-color, $transition-time-short)
+	background-color: transparent
+
+	width: 32px
+	height: 32px
+	font-size: 16px
+
+	cursor: pointer
+	border: none
+
+	padding: 0
+
+	@include border-radius($border-radius-small)
+
+	&:hover
+		background-color: $color-light-grey
+
+@mixin button-small()
+	@include button-normal()
+
+	width: 18px
+	height: 18px
+	font-size: 12px
+
+@mixin button()
+	@include button-normal()
