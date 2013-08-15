@@ -82,48 +82,58 @@ body
 #questions-table
 	clear: left
 
-	$first-col-width-resulting: $first-col-width - 2 * $default-padding
-	$col-width: ($total-width - $first-col-width) / 6  - 2 * $default-padding
+	$first-col-width-resulting: $first-col-width - $default-padding
+	$col-width: ($total-width - $first-col-width) / 6
+	$row-height: 8rem
 
 	width: $total-width
 	text-align: center
 
 	#questions-table-header-wrapper
+		padding: $default-padding 0 $default-padding / 2
 
-		table#questions-table-header
+		#questions-table-header
+			display: table-row
 			width: $total-width
-			border-collapse: collapse
 
-			td
+			> *
+				display: table-cell
 				width: $col-width
-				padding: $default-padding $default-padding
 				color: $color-grey
 
-				&:nth-child(1)
-					width: $first-col-width-resulting !important
+			> div:nth-child(1)
+				width: $first-col-width-resulting + $default-padding !important
 
 	#questions-table-rows-wrapper
 		height: $questions-height
 		overflow-x: hidden
 		overflow-y: scroll
 
-		table#questions-table-rows
+		#questions-table-rows
 			width: $total-width
-			border-collapse: collapse
 
-			tr
+			.row
+				display: table-row
+				width: $total-width
+				height: $row-height
+				overflow: hidden
+				color: $color-grey
+
+				> *
+					display: table-cell
+					height: $row-height
+					vertical-align: middle
 
 				&:nth-child(even)
 					background-color: $color-bg-grey
 
-				td
-					width: $col-width
-					padding: $default-padding $default-padding
-					height: 6em
+				.question
+					padding: 0 0 0 $default-padding
+					width: $first-col-width-resulting
+					text-align: left
 
-					&:nth-child(1)
-						text-align: left
-						width: $first-col-width-resulting
+				.cell
+					width: $col-width
 
 #bottom
 	text-align: center

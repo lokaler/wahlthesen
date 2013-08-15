@@ -16,8 +16,9 @@ define([
 
 	var QuestionView = Backbone.Marionette.ItemView.extend({
 
-		tagName:  'tr',
+		tagName:  'div',
 		template: _.template(template_question),
+		className: 'row',
 
 		events: {
 			'click .radio-button': 'clickRadioButton',
