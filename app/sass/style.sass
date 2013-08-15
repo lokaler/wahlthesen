@@ -80,6 +80,7 @@ body
 					color: $color-almost-black
 
 #questions-table
+	clear: left
 
 	$first-col-width-resulting: $first-col-width - 2 * $default-padding
 	$col-width: ($total-width - $first-col-width) / 6  - 2 * $default-padding
@@ -173,6 +174,8 @@ body
 		padding: $default-padding
 
 		.result, .party, .value
+			white-space: nowrap
+			overflow: hidden
 
 			&.gruene
 				color: $color-gruene
