@@ -7,14 +7,14 @@ $color-bg-grey: #f4f3f0
 $color-shadow: lighten($color-grey, 30%)
 
 // parteien
-$color-gruene: #1ab647
-$color-spd: #fc1116
+$color-gruene: #1fa12d
+$color-spd: #e20019
 $color-linke: #df2bd7
-$color-cdu: #333
-$color-csu: #0052b9
-$color-fdp: #f4c800
-$color-piraten: #fe8715
-$color-fw: #03b1fb
+$color-cdu: #000
+$color-csu: #238dc4
+$color-fdp: #cab025
+$color-piraten: #ff8800
+$color-fw: #0152a1
 
 $total-width: 940px
 $questions-height: 700px
@@ -80,6 +80,7 @@ body
 					color: $color-almost-black
 
 #questions-table
+	clear: left
 
 	$first-col-width-resulting: $first-col-width - 2 * $default-padding
 	$col-width: ($total-width - $first-col-width) / 6  - 2 * $default-padding
@@ -173,6 +174,8 @@ body
 		padding: $default-padding
 
 		.result, .party, .value
+			white-space: nowrap
+			overflow: hidden
 
 			&.gruene
 				color: $color-gruene

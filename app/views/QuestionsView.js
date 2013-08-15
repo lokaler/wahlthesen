@@ -33,12 +33,13 @@ define([
 		},
 
 		scrollToNextAnswer: function(view, answer_idx, target) {
-			var $selected_tr = this.$(target).parent().parent(),
-			$scroller = this.$('#questions-table-rows-wrapper'),
-			scroll_top = $scroller.scrollTop(),
-			scroll_top_needed = Math.max(0, $selected_tr.position().top + $selected_tr.height() - $scroller.height() + scroll_top);
-			if (scroll_top_needed > scroll_top)
-				$scroller.animate({ scrollTop: scroll_top_needed }, 200);
+			var $scroller = this.$('#questions-table-rows-wrapper');
+			var $next_tr = this.$(target).parent().parent().next();
+			var next_tr_bottom_pos = ($next_tr.position().top - $scroller.position().top)
+				+ $next_tr.height() + $scroller.scrollTop();
+			var scroll_bottom = $scroller.height() + $scroller.scrollTop();
+			if (next_tr_bottom_pos > scroll_bottom)
+				$scroller.animate({ scrollTop: next_tr_bottom_pos - $scroller.height() }, 200);
 		},
 
 		onRender: function() {
