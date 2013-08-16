@@ -39,8 +39,10 @@ define([
 			var $scroller = this.$('#questions-table-rows-wrapper');
 			var next_row_bottom_pos = $next_row.position().top + $next_row.height() + $scroller.scrollTop();
 			var scroll_bottom = $scroller.height() + $scroller.scrollTop();
-			if (next_row_bottom_pos > scroll_bottom)
-				$scroller.animate({ scrollTop: next_row_bottom_pos - $scroller.height() }, 200);
+			if (next_row_bottom_pos > scroll_bottom) {
+				$scroller.clearQueue()
+					.animate({ scrollTop: next_row_bottom_pos - $scroller.height() }, 200);
+			}
 		},
 
 		onRender: function() {

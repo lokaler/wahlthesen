@@ -30,10 +30,9 @@ define([
 				return;
 			var $t = this.$(evt.target), $radio_buttons = this.$('.radio-button'),
 			  answer_idx = 0;
-			// unselect
-			if ($t.hasClass('selected')) {
-				$t.removeClass('selected');
-			}
+			// rb already selected
+			if ($t.hasClass('selected'))
+				return;
 			// select
 			else {
 				$radio_buttons.removeClass('selected');
@@ -41,7 +40,7 @@ define([
 				answer_idx = $radio_buttons.index($t) + 1;
 			}
 			// trigger select event
-			this.trigger('answer-select', answer_idx, evt.target);
+			this.trigger('answer-select', answer_idx - 3, evt.target);
 		},
 
 		clickCheckBox: function(evt) {

@@ -4,7 +4,7 @@
 	</div>
 	<div class="result <%= main.class %>">
 		<span class="party"><%= main.name %></span>
-		<span class="value"><%= main.value %>%</span>
+		<span class="value"><%= Math.round(main.value) %>%</span>
 	</div>
 </div>
 <div id="other-values">
@@ -14,7 +14,7 @@
 	<div class="result">
 		<% for (var i = 0; i < others.length; ++i) { var p = others[i]; %>
 			<span class="party <%= p.class %>"><%= p.name %></span>
-			<span class="value <%= p.class %>"><%= p.value %>%</span>
+			<span class="value <%= p.class %>"><%= Math.round(p.value) %>%</span>
 		<% } %>
 	</div>
 </div>

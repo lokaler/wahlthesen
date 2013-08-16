@@ -57,7 +57,7 @@ define([
 				_.each([sums, total], function(a) {
 					a[i] = {};
 					_.each(parteien_keys, function(p) {
-						a[i][p] = 0;
+						a[i][p] = .0;
 					});
 				});
 			}
@@ -84,7 +84,31 @@ define([
 			}
 
 			this._averages = avg;
+			this._total = total;
 			return avg;
+		},
+
+		/*
+		 * Returns votes per question per party. Eg.:
+		 * [
+		 *   // first question
+		 *   {
+		 *     cdu: 111,
+		 *     csu: 26,
+		 *     fdp: 49,
+		 *     fw: 10,
+		 *     gruene: 104,
+		 *     linke: 68,
+		 *     piraten: 21,
+		 *     spd: 197
+		 *   },
+		 *   [ 34 more ...]
+		 * ]
+		 */
+		getVotesPerQuestion: function() {
+			if (!this._total)
+				getAveragesPerQuestion();
+			return this._total;
 		},
 
 		load: function() {
