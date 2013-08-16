@@ -32,6 +32,12 @@ define([
 			'itemview:answer-select': 'scrollToNextAnswer'
 		},
 
+		scrollToTop: function() {
+			var $scroller = this.$('#questions-table-rows-wrapper');
+			$scroller.clearQueue()
+				.animate({ scrollTop: 0 }, ($scroller.scrollTop() / $scroller.children().height()) * 2000);
+		},
+
 		scrollToNextAnswer: function(view, answer_idx, target) {
 			var $next_row = this.$(target).parent().parent().next();
 			if ($next_row.length == 0)
@@ -45,8 +51,16 @@ define([
 			}
 		},
 
+		checkAnsweredQuestions: function() {
+			var total = this.$('.row').length,
+			num_answered = this.$('.radio-button.selected').length;
+			if (num_answered == total)
+				this.trigger('all-answered');
+		},
+
 		onRender: function() {
 			this.on('itemview:answer-select', this.scrollToNextAnswer);
+			this.on('itemview:answer-select', this.checkAnsweredQuestions);
 		},
 
 		showAverages: function() {

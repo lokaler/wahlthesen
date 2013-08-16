@@ -89,7 +89,7 @@ require([
 		if (window.MODE == 'DEBUG')
 			App.modules.devtools = new DevtoolsModule();
 	});
-		
+
 	App.start();
 
 	// Evaluation done?
@@ -113,6 +113,9 @@ require([
 	App.layout.region_table.show(questions_table);
 	App.listenTo(questions_table, 'itemview:answer-select', answer_select);
 	App.listenTo(questions_table, 'itemview:answer-weight-toggle', answer_weight_toggle);
+	App.listenToOnce(questions_table, 'all-answered', function() {
+		App.layout.region_bottom.currentView.enableStartButton();
+	});
 
 	// bottom
 	var bottom_view = new BottomView();
@@ -120,6 +123,7 @@ require([
 	App.listenToOnce(bottom_view, 'start', function() {
 		App.layout.region_bottom.close();
 		do_analysis();
+		App.layout.region_table.currentView.scrollToTop();
 	});
 
 });

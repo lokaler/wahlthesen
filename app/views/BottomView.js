@@ -18,8 +18,17 @@ define([
 
 		template: _.template(template_bottom),
 
-		triggers: {
-			'click button[name=start]': 'start'
+		events: {
+			'click button[name=start]': 'clickStartButton'
+		},
+
+		clickStartButton: function() {
+			if (!this.$('button[name=start]').hasClass('disabled'))
+				this.trigger('start');
+		},
+
+		enableStartButton: function() {
+			this.$('button[name=start]').removeClass('disabled');
 		}
 
 	});
