@@ -26,12 +26,27 @@ define([
 			opinions: []
 		},
 
-		_cache: {
-		},
-
+		/**
+		 * Calculates averages per party per question
+		 * Result looks like this (values between -2 and 2)
+		 * [
+		 *   // first question
+		 *   {
+		 *     cdu: -1.2612612612612613,
+		 *     csu: -0.8076923076923077,
+		 *     fdp: -0.16326530612244897,
+		 *     fw: 1.5,
+		 *     gruene: 1.2307692307692308,
+		 *     linke: 1.588235294117647,
+		 *     piraten: 1.5714285714285714,
+		 *     spd: 0.4010152284263959
+		 *   },
+		 *   [ 34 more... ]
+		 * ]
+		 */
 		getAveragesPerQuestion: function() {
-			if (this._cache.averages)
-				return this._cache.averages;
+			if (this._averages)
+				return this._averages;
 
 			var questions = App.data.questions.models;
 			var i, j, parteien_keys = _.keys(App.data.names.parteien);
@@ -68,7 +83,7 @@ define([
 				});
 			}
 
-			this._cache.averages = avg;
+			this._averages = avg;
 			return avg;
 		},
 
