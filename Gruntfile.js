@@ -208,9 +208,9 @@ module.exports = function(grunt) {
 				src: [
 					"lib/almond.js",
 					"dist/release/templates.js",
-					"dist/release/lokaler.js"
+					"dist/release/pack.js"
 				],
-				dest: "dist/release/lokaler.js",
+				dest: "dist/release/pack.js",
 				separator: ";"
 			}
 		},
@@ -290,7 +290,7 @@ module.exports = function(grunt) {
 			},
 			release: {
 				files: {
-					"dist/release/lokaler.css": "app/.tmp-styles/index.css"
+					"dist/release/style.css": "app/.tmp-styles/index.css"
 				}
 			}
 		},
@@ -309,7 +309,7 @@ module.exports = function(grunt) {
 			release: {
 				options: {
 					mainConfigFile: "app/config.js",
-					out: "dist/release/lokaler.js",
+					out: "dist/release/pack.js",
 					name: "config"
 				}
 			}
@@ -318,19 +318,19 @@ module.exports = function(grunt) {
 		uglify: {
 			release: {
 				files: {
-					"dist/release/lokaler.js": ["dist/release/lokaler.js"]
+					"dist/release/pack.js": ["dist/release/pack.js"]
 				}
 			}
 		},
 
 		cssmin: {
 			release: {
-				src: "dist/release/lokaler.css",
-				dest: "dist/release/lokaler.css"
+				src: "dist/release/style.css",
+				dest: "dist/release/style.css"
 			}
 		},
 
-		// copy font files
+		// copy files
 		copy: {
 			debug: {
 				files: [
@@ -368,6 +368,24 @@ module.exports = function(grunt) {
 						cwd: "app/styles/",
 						src: "*",
 						dest: "app/.tmp-styles/"
+					},
+					{
+						expand: true,
+						cwd: "app/styles/images/",
+						src: "*",
+						dest: "dist/release/images/"
+					},
+					{
+						expand: true,
+						cwd: "app/styles/font/",
+						src: "*",
+						dest: "dist/release/font/"
+					},
+					{
+						expand: true,
+						cwd: "",
+						src: "{wahlthesen,questions}.json",
+						dest: "dist/release/"
 					},
 					{
 						expand: true,

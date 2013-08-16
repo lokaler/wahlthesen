@@ -84,7 +84,8 @@ require([
 
 	App.addInitializer(function() {
 		App.modules.dialog   = new DialogModule();
-		App.modules.devtools = new DevtoolsModule();
+		if (window.MODE == 'DEBUG')
+			App.modules.devtools = new DevtoolsModule();
 	});
 		
 	App.start();

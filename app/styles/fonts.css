@@ -1,10 +1,10 @@
 @font-face {
 	font-family:SZSansRegular;
-	src:url('fonts/SZSans.eot');
-	src:url('fonts/SZSans.eot#iefix') format('eot'),url('fonts/SZSans.woff') format('woff'),url('fonts/SZSans.otf') format('opentype')
+	src:url('font/SZSans.eot');
+	src:url('font/SZSans.eot#iefix') format('eot'),url('font/SZSans.woff') format('woff'),url('font/SZSans.otf') format('opentype')
 }
 @font-face {
 	font-family:SZSansBold;
-	src:url('fonts/SZSans-Bold.eot');
-	src:url('fonts/SZSans-Bold.eot#iefix') format('eot'),url('fonts/SZSans-Bold.woff') format('woff'),url('fonts/SZSans-Bold.otf') format('opentype')
+	src:url('font/SZSans-Bold.eot');
+	src:url('font/SZSans-Bold.eot#iefix') format('eot'),url('font/SZSans-Bold.woff') format('woff'),url('font/SZSans-Bold.otf') format('opentype')
 }

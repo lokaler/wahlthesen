@@ -1,6 +1,7 @@
 @import "../../lib/font-awesome/font-awesome.css";
 
 @import "style.css";
+@import "fonts.css";
 
 @import "compiled/modules/dialog/dialog.css";
 @import "compiled/modules/dialog/title-and-content.css";

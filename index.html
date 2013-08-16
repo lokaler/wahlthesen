@@ -3,8 +3,17 @@
 <head>
 	<meta charset="utf-8">
 	<title></title>
+	<!--(if target dummy)><!-->
 	<link rel="stylesheet" href="app/styles/index.css" type="text/css" charset="utf-8"/>
-	<link rel="stylesheet" href="app/styles/fonts.css" type="text/css" charset="utf-8"/>
+	<!--<!(endif)-->
+
+	<!--(if target debug)>
+	<link rel="stylesheet" href="index.css" type="text/css" charset="utf-8"/>
+	<!(endif)-->
+
+	<!--(if target release)>
+	<link rel="stylesheet" href="style.css" type="text/css" charset="utf-8"/>
+	<!(endif)-->
 </head>
 <body>
 	<div id="pagewrap">
@@ -19,6 +28,19 @@
 	</div>
 
 	<script data-main="app/config" src="/lib/require.js"></script>
+	<!--(if target dummy)><!-->
+	<script>window.MODE="DEBUG"</script>
 	<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+	<!--<!(endif)-->
+
+	<!--(if target debug)>
+	<script>window.MODE="DEBUG"</script>
+	<script src="require.js"></script>
+	<!(endif)-->
+
+	<!--(if target release)>
+	<script>window.MODE="RELEASE"</script>
+	<script src="pack.js"></script>
+	<!(endif)-->
 </body>
 </html>
