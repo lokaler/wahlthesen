@@ -59,6 +59,8 @@ require([
 	function show_results() {
 		var result_view = new ResultView({ model: App.data.result });
 		App.layout.region_result.show(result_view);
+		App.evaluated = true;
+		App.layout.$el.addClass('evaluated');
 	}
 
 	function show_all_averages() {
@@ -89,6 +91,9 @@ require([
 	});
 		
 	App.start();
+
+	// Evaluation done?
+	App.evaluated = false;
 
 	// init app data
 	App.data.questions = new Questions();

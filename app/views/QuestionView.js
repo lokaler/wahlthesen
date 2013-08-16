@@ -22,11 +22,12 @@ define([
 
 		events: {
 			'click .radio-button':      'clickRadioButton',
-			'click .checkbox':          'clickCheckBox',
-			'mouseenter .party-avg':    'showAvgTooltip'
+			'click .checkbox':          'clickCheckBox'
 		},
 
 		clickRadioButton: function(evt) {
+			if (App.evaluated)
+				return;
 			var $t = this.$(evt.target), $radio_buttons = this.$('.radio-button'),
 			  answer_idx = 0;
 			// unselect
@@ -44,16 +45,16 @@ define([
 		},
 
 		clickCheckBox: function(evt) {
+			if (App.evaluated)
+				return;
 			var $t = this.$(evt.target);
 			$t.toggleClass('selected');
 			this.trigger('answer-weight-toggle', $t.hasClass('selected'));
 		},
 
-		showAvgHover: function() {
-			console.log('HOVER!');
-		},
-
 		showAllAverages: function() {
+			if (App.result)
+				return;
 			var that = this;
 			_.each(_.keys(App.data.names.parteien), function(party) {
 				that.showPartyAverage(party);
