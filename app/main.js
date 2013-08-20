@@ -89,7 +89,7 @@ require([
 
 	App.addInitializer(function() {
 		App.modules.dialog   = new DialogModule();
-		if (window.MODE == 'DEBUG')
+		if (window.MODE == 'DEV' || window.MODE == 'DEBUG')
 			App.modules.devtools = new DevtoolsModule();
 	});
 
