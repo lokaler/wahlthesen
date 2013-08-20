@@ -13,3 +13,5 @@ wahlthesen.csv
 wahlthesen.json
 questions.json
 .project
+.pydevproject
+.settings
