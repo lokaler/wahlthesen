@@ -104,10 +104,13 @@ for row in reader:
 
     rownum += 1
 
-f = open('wahlthesen.json', 'w')
-f.write(json.dumps(answer_sets))
+def make_module(data):
+	return 'define(function() { return %s; });' % json.dumps(data)
+
+f = open('app/data/wahlthesen.js', 'w')
+f.write(make_module(answer_sets))
 f.close()
 
-f = open('questions.json', 'w')
-f.write(json.dumps(questions))
+f = open('app/data/questions.js', 'w')
+f.write(make_module(questions))
 f.close()
