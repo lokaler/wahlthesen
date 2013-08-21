@@ -1,3 +1,4 @@
+@import "compass"
 @import "vars"
 
 #questions-table
@@ -27,6 +28,16 @@
 
 			> div:nth-child(1)
 				width: $first-col-width-resulting + $default-padding !important
+
+	.caret i
+		margin-left: -5px
+		font-size: 60px
+		color: #ccc
+		opacity: 1
+		+single-transition(opacity, 0.3s)
+
+	.filled-in .caret i
+		opacity: 0
 
 	.shadow-top, .shadow-bottom
 		position: absolute

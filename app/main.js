@@ -113,13 +113,18 @@ require([
 	App.layout.region_table.show(questions_table);
 	App.listenTo(questions_table, 'itemview:answer-select', answer_select);
 	App.listenTo(questions_table, 'itemview:answer-weight-toggle', answer_weight_toggle);
+
+	App.listenTo(questions_table, 'num-answered', function(num_answered) {
+		bottom_view.displayNumAnswered(num_answered);
+	});
+
 	App.listenToOnce(questions_table, 'all-answered', function() {
-		App.layout.region_bottom.currentView.enableStartButton();
+		bottom_view.enableStartButton();
 	});
 
 	// bottom
 	var bottom_view = new BottomView();
-	App.layout.region_bottom.show(bottom_view);
+	App.layout.region_result.show(bottom_view);
 	App.listenToOnce(bottom_view, 'start', function() {
 		App.layout.region_bottom.close();
 		do_analysis();

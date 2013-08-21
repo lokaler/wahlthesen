@@ -44,6 +44,7 @@ define([
 				answer_idx = $radio_buttons.index($t) + 1;
 			}
 			// trigger select event
+			this.$el.addClass('filled-in');
 			this.trigger('answer-select', answer_idx - 3, evt.target);
 		},
 

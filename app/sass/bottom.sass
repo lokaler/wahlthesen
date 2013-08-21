@@ -1,28 +1,50 @@
 @import "compass"
 @import "vars"
 
-#bottom
-	text-align: center
+$font-size:  22px
+
+#answer-progress
+	font-size: $font-size
+
+	#progress-container
+		text-align: center
+		
+		#progress-centered
+			position: relative
+			display: inline-block
+			width: 50%
+			+default-box-shadow()
+
+			#progress-meter, #progress-text, button[name=start]
+				height: 70px
+
+			#progress-meter
+				position: absolute
+				background-color: #eee
+				z-index: 0
+				+single-transition(width, 300ms)
+
+			#progress-button, button[name=start]
+				position: relative
+				width: 100%
+				z-index: 1
 
 	button[name=start]
-		@include default-box-shadow()
+		font-size: $font-size
+		letter-spacing: 2px
+		width: 100%
 		cursor: pointer
 		font-family: SZSansBold
-		margin: 18px 20px 34px
-		padding: 16px 45px
-		background-color: white
+		background-color: transparent
 		border: 1px solid $color-border-grey
-		font-size: 22px
 		color: $color-almost-black
+		+default-box-shadow()
 
 		&:hover
-			background-color: $color-bg-grey
+			background-color: transparent
 
 		&.disabled
+			font-family: SZSansRegular
 			color: lighten($color-almost-black, 50)
-			@include default-box-shadow(lighten($color-shadow, 10))
-			border-color: lighten($color-border-grey, 10)
 			cursor: default
-
-			&:hover
-				background-color: white
+			+default-box-shadow(lighten($color-shadow, 10))

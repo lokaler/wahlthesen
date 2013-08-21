@@ -29,10 +29,6 @@ define([
 			'click button[name=start]': 'start'
 		},
 
-		events: {
-			'itemview:answer-select': 'scrollToNextAnswer'
-		},
-
 		scrollToTop: function() {
 			var $scroller = this.$('#questions-table-rows-wrapper');
 			$scroller.clearQueue()
@@ -55,6 +51,7 @@ define([
 		checkAnsweredQuestions: function() {
 			var total = this.$('.row').length,
 			num_answered = this.$('.radio-button.selected').length;
+			this.trigger('num-answered', num_answered);
 			if (num_answered == total)
 				this.trigger('all-answered');
 		},
