@@ -39,6 +39,7 @@ define([
 			// select
 			else {
 				$radio_buttons.removeClass('selected');
+				$t.removeClass('unselected');
 				$t.addClass('selected');
 				answer_idx = $radio_buttons.index($t) + 1;
 			}
