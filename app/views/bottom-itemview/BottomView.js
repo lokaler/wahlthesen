@@ -3,20 +3,20 @@ define([
 	'app',
 	'lodash',
 	'bbloader',
-	'text!templates/bottom.html'
+	'text!./template.html'
 
 ], function (
 
 	app,
 	_,
 	Backbone,
-	template_bottom
+	template
 
 ) {
 
 	var BottomView = Backbone.Marionette.CompositeView.extend({
 
-		template: _.template(template_bottom),
+		template: _.template(template),
 
 		events: {
 			'click button[name=start]': 'clickStartButton'

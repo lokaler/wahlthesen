@@ -4,8 +4,8 @@ define([
 	'lodash',
 	'bbloader',
 
-	'views/QuestionView',
-	'text!templates/questions-table.html'
+	'./question-itemview/QuestionItemView',
+	'text!./template.html'
 
 ], function (
 
@@ -13,16 +13,16 @@ define([
 	_,
 	Backbone,
 
-	QuestionView,
-	template_questions_table
+	QuestionItemView,
+	template
 
 ) {
 
-	var QuestionsView = Backbone.Marionette.CompositeView.extend({
+	var QuestionsCompositeView = Backbone.Marionette.CompositeView.extend({
 
-		itemView:          QuestionView,
+		itemView:          QuestionItemView,
 		itemViewContainer: '#questions-table-rows',
-		template:          _.template(template_questions_table),
+		template:          _.template(template),
 
 		triggers: {
 			'click button[name=start]': 'start'
@@ -69,6 +69,6 @@ define([
 
 	});
 
-	return QuestionsView;
+	return QuestionsCompositeView;
 
 });

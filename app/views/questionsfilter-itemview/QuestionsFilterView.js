@@ -3,7 +3,7 @@ define([
 	'app',
 	'lodash',
 	'bbloader',
-	'text!templates/questions-filter.html'
+	'text!./template.html'
 
 ], function (
 

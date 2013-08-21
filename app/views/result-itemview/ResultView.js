@@ -4,7 +4,7 @@ define([
 	'lodash',
 	'bbloader',
 
-	'text!templates/result.html'
+	'text!./template.html'
 
 ], function (
 

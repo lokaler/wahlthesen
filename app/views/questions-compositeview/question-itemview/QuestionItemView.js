@@ -3,7 +3,7 @@ define([
 	'app',
 	'lodash',
 	'bbloader',
-	'text!templates/question.html'
+	'text!./template.html'
 
 ], function (
 
@@ -61,6 +61,7 @@ define([
 		},
 
 		showPartyAverage: function(party) {
+			// TODO! make this fast
 			var $el = this.$('.overlay > .party-avg.%s'.format(party));
 			var avg = App.data.abgeordnete.getAveragesPerQuestion()[this.model.get('id')][party];
 			var col_width = this.$('.cell').outerWidth();
