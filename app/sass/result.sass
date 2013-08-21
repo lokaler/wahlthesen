@@ -10,20 +10,32 @@
 	> div > div
 		float: left
 		padding: $default-padding
+		width: 100%
 
-		.result, .party, .value
-			white-space: nowrap
-			overflow: hidden
+	.result, .party, .value
+		white-space: nowrap
+		overflow: hidden
+
+	.col-1
+		font-size: 30px
+
+	.col-2
+		font-size: 26px
+
+	.col-3
+		font-size: 22px
 
 	#main-value
 		width: $first-col-width - 2 * $default-padding
 		border-right: $color-border-grey solid $border-width
 		text-align: center
 
-		.label
+		div.label
+			display: inline-block
 			margin-bottom: 6px
 
-		.result
+		div.result
+			display: inline-block
 			font-family: SZSansBold
 			font-size: 38px
 
@@ -35,10 +47,11 @@
 				font-size: 37px
 
 	#other-values
-		width: $total-width - $first-col-width - 2 * $default-padding - $border-width
+		// width: $total-width - $first-col-width - 2 * $default-padding - $border-width
+		text-align: center
 
 		.label
-			margin-bottom: 20px
+			margin-bottom: 0px
 
 		.result
 			font-size: 18px

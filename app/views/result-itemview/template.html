@@ -1,20 +1,11 @@
-<div id="main-value">
-	<div class="label">
-		Höchste Übereinstimmung
-	</div>
-	<div class="result <%= main.class %>">
-		<span class="party"><%= main.name %></span>
-		<span class="value"><%= Math.round(main.value) %>%</span>
-	</div>
-</div>
 <div id="other-values">
 	<div class="label">
-		Abweichungen zwischen Ihren Antworten und denen der Abgeordneten
+		Übereinstimmungen zwischen Ihren Antworten und denen der Abgeordneten
 	</div>
 	<div class="result">
-		<% for (var i = 0; i < others.length; ++i) { var p = others[i]; %>
-			<span class="party <%= p.class %>"><%= p.name %></span>
-			<span class="value <%= p.class %>"><%= Math.round(p.value) %>%</span>
-		<% } %>
+		<% _.each(parties, function(party, i) { %>
+			<span class="party <%= party.class %> col-<%= i+1 %>"><%= party.name %></span>
+			<span class="value <%= party.class %> col-<%= i+1 %>"><%= Math.round(party.value) %>%</span>
+		<% }); %>
 	</div>
 </div>

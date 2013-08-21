@@ -45,36 +45,37 @@ define([
 		 * }
 		 */
 		serializeData: function(model) {
-			var n = App.data.names.parteien, r, parteien, main;
+			var n = App.data.names.parteien, r, parties, main;
 
 			// sort by value (descending)
-			parteien = _(this.model.attributes)
+			parties = _(this.model.attributes)
 				.chain()
 				.map(function(v, k) { return [k, v]; })
 				.sortBy(function(a) { return -a[1]; })
+				.map(function(party) {
+					return {
+						name: n[party[0]],
+						class: party[0],
+						value: party[1]
+					};
+				})
 				.value();
 
+			return { parties: parties };
+
 			// highest value becomes main
-			main = parteien.shift();
-			r = {
-				main: {
-					name: n[main[0]],
-					class: main[0],
-					value: main[1]
-				},
+			main = parties.shift();
+			ctx = {
+				main: main,
 				others : []
 			};
 
 			// append rest
-			_.each(parteien, function(p) {
-				r.others.push({
-					name: n[p[0]],
-					class: p[0],
-					value: p[1]
-				});
+			_.each(parties, function(p) {
+				ctx.others.push(p);
 			});
 
-			return r;
+			return ctx;
 		}
 
 	});
