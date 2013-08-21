@@ -1,0 +1,26 @@
+@import "vars"
+
+#filter
+
+	> div
+
+		border-top: 1px solid $color-border-grey
+		border-bottom: 1px solid $color-border-grey
+		height: 34px
+
+		.filter
+			float: left
+			margin: 6px 0 4px 16px
+			height: 19px
+			line-height: 23px
+
+			.checkbox
+				position: absolute
+
+			label
+				color: $color-grey
+				cursor: pointer
+				margin-left: 30px
+
+				&.selected
+					color: $color-almost-black

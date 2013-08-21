@@ -1,0 +1,71 @@
+@import "vars"
+
+#questions-table
+	clear: left
+
+	$first-col-width-resulting: $first-col-width - $default-padding
+	$col-width: ($total-width - $first-col-width) / 6
+	$row-height: 7rem
+
+	width: $total-width
+	text-align: center
+
+	#questions-table-header-wrapper
+		padding: $default-padding 0 $default-padding / 2
+
+		#questions-table-header
+			display: table-row
+			width: $total-width
+
+			> *
+				display: table-cell
+				width: $col-width
+				color: $color-grey
+
+			> div:nth-child(1)
+				width: $first-col-width-resulting + $default-padding !important
+
+	#questions-table-rows-wrapper
+		position: relative
+		height: $questions-height
+		overflow-x: hidden
+		overflow-y: scroll
+
+		#questions-table-rows
+			width: $total-width
+
+			.row
+				display: table-row
+				width: $total-width
+				height: $row-height
+				overflow: hidden
+				color: $color-grey
+
+				> *
+					display: table-cell
+					height: $row-height
+					vertical-align: middle
+
+				&:nth-child(even)
+					background-color: $color-bg-grey
+
+				.question
+					padding: 0 0 0 $default-padding
+					width: $first-col-width-resulting
+					text-align: left
+
+				.cell
+					width: $col-width
+
+				.overlay
+					position: absolute
+					width: auto
+					height: auto
+					margin-left: -$total-width
+
+					> .party-avg
+						top: 48px
+						display: none
+						position: absolute
+						cursor: default
+						opacity: 0.75

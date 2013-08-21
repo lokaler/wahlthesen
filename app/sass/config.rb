@@ -1,4 +1,4 @@
-css_dir = "../styles"
+css_dir = "../styles/compiled"
 sass_dir = "."
-images_dir = "../styles/images"
+images_dir = "app/styles/images"
 sass_options = { :debug_info => true }

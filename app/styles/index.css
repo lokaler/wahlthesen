@@ -1,7 +1,12 @@
 @import "../../lib/font-awesome/font-awesome.css";
 
-@import "style.css";
 @import "fonts.css";
+
+@import "compiled/style.css";
+@import "compiled/bottom.css";
+@import "compiled/filter.css";
+@import "compiled/questions-table.css";
+@import "compiled/result.css";
 
 @import "compiled/modules/dialog/dialog.css";
 @import "compiled/modules/dialog/title-and-content.css";

@@ -1,0 +1,28 @@
+@import "compass"
+@import "vars"
+
+#bottom
+	text-align: center
+
+	button[name=start]
+		@include default-box-shadow()
+		cursor: pointer
+		font-family: SZSansBold
+		margin: 18px 20px 34px
+		padding: 16px 45px
+		background-color: white
+		border: 1px solid $color-border-grey
+		font-size: 22px
+		color: $color-almost-black
+
+		&:hover
+			background-color: $color-bg-grey
+
+		&.disabled
+			color: lighten($color-almost-black, 50)
+			@include default-box-shadow(lighten($color-shadow, 10))
+			border-color: lighten($color-border-grey, 10)
+			cursor: default
+
+			&:hover
+				background-color: white

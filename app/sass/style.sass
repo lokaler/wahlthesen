@@ -1,28 +1,5 @@
-@import "compass/css3"
-
-$color-almost-black: #333
-$color-grey: #888
-$color-border-grey: #d1d1d1
-$color-bg-grey: #f4f3f0
-$color-shadow: lighten($color-grey, 30%)
-
-// parteien
-$color-gruene: #1fa12d
-$color-spd: #e20019
-$color-linke: #df2bd7
-$color-cdu: #000
-$color-csu: #238dc4
-$color-fdp: #cab025
-$color-piraten: #ff8800
-$color-fw: #0152a1
-
-$total-width: 940px
-$questions-height: 700px
-$first-col-width: 220px
-$default-padding: 16px
-
-@mixin default-box-shadow($color: $color-shadow)
-	@include box-shadow($color 4px 4px 4px)
+@import "compass"
+@import "vars"
 
 .gruene
 	color: $color-gruene
@@ -50,127 +27,6 @@ body
 	#pagewrap
 		width: $total-width
 
-#filter
-
-	> div
-
-		border-top: 1px solid $color-border-grey
-		border-bottom: 1px solid $color-border-grey
-		height: 34px
-
-		.filter
-			float: left
-			margin: 6px 0 4px 16px
-			height: 19px
-			line-height: 23px
-
-			.checkbox
-				position: absolute
-
-			label
-				color: $color-grey
-				cursor: pointer
-				margin-left: 30px
-
-				&.selected
-					color: $color-almost-black
-
-#questions-table
-	clear: left
-
-	$first-col-width-resulting: $first-col-width - $default-padding
-	$col-width: ($total-width - $first-col-width) / 6
-	$row-height: 7rem
-
-	width: $total-width
-	text-align: center
-
-	#questions-table-header-wrapper
-		padding: $default-padding 0 $default-padding / 2
-
-		#questions-table-header
-			display: table-row
-			width: $total-width
-
-			> *
-				display: table-cell
-				width: $col-width
-				color: $color-grey
-
-			> div:nth-child(1)
-				width: $first-col-width-resulting + $default-padding !important
-
-	#questions-table-rows-wrapper
-		position: relative
-		height: $questions-height
-		overflow-x: hidden
-		overflow-y: scroll
-
-		#questions-table-rows
-			width: $total-width
-
-			.row
-				display: table-row
-				width: $total-width
-				height: $row-height
-				overflow: hidden
-				color: $color-grey
-
-				> *
-					display: table-cell
-					height: $row-height
-					vertical-align: middle
-
-				&:nth-child(even)
-					background-color: $color-bg-grey
-
-				.question
-					padding: 0 0 0 $default-padding
-					width: $first-col-width-resulting
-					text-align: left
-
-				.cell
-					width: $col-width
-
-				.overlay
-					position: absolute
-					width: auto
-					height: auto
-					margin-left: -$total-width
-
-					> .party-avg
-						top: 48px
-						display: none
-						position: absolute
-						cursor: default
-						opacity: 0.75
-
-#bottom
-	text-align: center
-
-	button[name=start]
-		@include default-box-shadow()
-		cursor: pointer
-		font-family: SZSansBold
-		margin: 18px 20px 34px
-		padding: 16px 45px
-		background-color: white
-		border: 1px solid $color-border-grey
-		font-size: 22px
-		color: $color-almost-black
-
-		&:hover
-			background-color: $color-bg-grey
-
-		&.disabled
-			color: lighten($color-almost-black, 50)
-			@include default-box-shadow(lighten($color-shadow, 10))
-			border-color: lighten($color-border-grey, 10)
-			cursor: default
-
-			&:hover
-				background-color: white
-
 .evaluated
 
 	.radio-button, .checkbox
@@ -181,67 +37,18 @@ body
 	width: 22px
 	height: 23px
 	margin: 0 auto
-	background-image: url(images/radio-button.png)
+	background-image: image-url("radio-button.png")
 	cursor: pointer
 
 	&.selected
-		background-image: url(images/radio-button-selected.png)
+		background-image: image-url("radio-button-selected.png")
 
 .checkbox
 	width: 18px
 	height: 19px
 	margin: 0 auto
-	background-image: url(images/checkbox.png)
+	background-image: image-url("checkbox.png")
 	cursor: pointer
 
 	&.selected
-		background-image: url(images/checkbox-selected.png)
-
-#result
-
-	$border-width: 3px
-
-	color: $color-grey
-	margin: 20px 0
-
-	> div > div
-		float: left
-		padding: $default-padding
-
-		.result, .party, .value
-			white-space: nowrap
-			overflow: hidden
-
-	#main-value
-		width: $first-col-width - 2 * $default-padding
-		border-right: $color-border-grey solid $border-width
-		text-align: center
-
-		.label
-			margin-bottom: 6px
-
-		.result
-			font-family: SZSansBold
-			font-size: 38px
-
-			&.fw
-				font-size: 26px
-				margin-top: 15px
-
-			&.piraten
-				font-size: 37px
-
-	#other-values
-		width: $total-width - $first-col-width - 2 * $default-padding - $border-width
-
-		.label
-			margin-bottom: 20px
-
-		.result
-			font-size: 18px
-
-			.label
-				margin-bottom: 22px
-
-			.value
-				margin-right: 10px
+		background-image: image-url("checkbox-selected.png")
