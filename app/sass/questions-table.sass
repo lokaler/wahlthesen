@@ -6,6 +6,7 @@
 	$first-col-width-resulting: $first-col-width - $default-padding
 	$col-width: ($total-width - $first-col-width) / 6
 	$row-height: 7rem
+	$shadow-height: 10px
 
 	width: $total-width
 	text-align: center
@@ -26,6 +27,23 @@
 
 			> div:nth-child(1)
 				width: $first-col-width-resulting + $default-padding !important
+
+	.shadow-top, .shadow-bottom
+		position: absolute
+		width: $total-width
+		height: $shadow-height
+		opacity: 0.2
+		background-size: $shadow-height $shadow-height
+		background-repeat: repeat no-repeat
+		z-index: 1
+		pointer-events: none
+	
+	.shadow-top
+		background-image: image-url("gradient-top.png")
+
+	.shadow-bottom
+		margin-top: -$shadow-height
+		background-image: image-url("gradient-bottom.png")
 
 	#questions-table-rows-wrapper
 		position: relative
