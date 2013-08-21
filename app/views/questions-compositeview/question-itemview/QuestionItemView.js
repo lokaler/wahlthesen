@@ -23,7 +23,9 @@ define([
 
 		events: {
 			'click .radio-button':      'clickRadioButton',
-			'click .checkbox':          'clickCheckBox'
+			'click .checkbox':          'clickCheckBox',
+			'mouseover .icon-circle':   'mouseoverCircle',
+			'mouseout  .icon-circle':   'mouseoutCircle'
 		},
 
 		clickRadioButton: function(evt) {
@@ -50,6 +52,17 @@ define([
 			var $t = this.$(evt.target);
 			$t.toggleClass('selected');
 			this.trigger('answer-weight-toggle', $t.hasClass('selected'));
+		},
+
+		mouseoverCircle: function(evt) {
+			var party = evt.currentTarget.parentElement.attributes['data-party'].textContent;
+			$('div.party-avg:not(.%s)'.format(party)).addClass('dim');
+			$('div.party-avg.%s'.format(party)).addClass(' highlight');
+			// console.log('click in', party);
+		},
+
+		mouseoutCircle: function(evt) {
+			$('div.party-avg').removeClass('dim').removeClass(' highlight');
 		},
 
 		showAllAverages: function() {
