@@ -16,6 +16,8 @@ define([
 
 	var QuestionsFilterView = Backbone.Marionette.ItemView.extend({
 
+		name: 'QuestionsFilterView',
+
 		template: _.template(template_questions_filter),
 
 		serializeData: function() {

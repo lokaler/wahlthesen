@@ -18,6 +18,7 @@ define([
 
 	var ResultView = Backbone.Marionette.ItemView.extend({
 
+		name: 'ResultView',
 		template: _.template(template),
 
 		/**

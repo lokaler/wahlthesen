@@ -1,12 +1,22 @@
 define([
 
+	'patches/backbone',
 	'jquery',
 	'underscore',
 	'bbloader',
 	'proto',
 	'text!templates/main.html'	
 
-], function($, _, Backbone, proto, template_main) {
+], function(
+	
+	patches_backbone,
+	$,
+	_,
+	Backbone,
+	proto,
+	template_main
+
+) {
 
 	App = new Backbone.Marionette.Application();
 	App.root = '/';

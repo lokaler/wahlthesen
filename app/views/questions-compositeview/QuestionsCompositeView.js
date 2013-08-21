@@ -20,6 +20,7 @@ define([
 
 	var QuestionsCompositeView = Backbone.Marionette.CompositeView.extend({
 
+		name: 'QuestionsCompositeView',
 		itemView:          QuestionItemView,
 		itemViewContainer: '#questions-table-rows',
 		template:          _.template(template),

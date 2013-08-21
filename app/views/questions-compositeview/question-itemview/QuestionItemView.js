@@ -16,6 +16,7 @@ define([
 
 	var QuestionView = Backbone.Marionette.ItemView.extend({
 
+		name: 'QuestionView',
 		tagName:  'div',
 		template: _.template(template_question),
 		className: 'row',

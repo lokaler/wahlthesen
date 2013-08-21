@@ -16,6 +16,7 @@ define([
 
 	var BottomView = Backbone.Marionette.CompositeView.extend({
 
+		name: 'BottomView',
 		template: _.template(template),
 
 		events: {

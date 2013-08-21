@@ -24,6 +24,7 @@ define([
 
 	var DevtoolsView = Backbone.Marionette.ItemView.extend({
 
+		name: 'DevtoolsView',
 		serializeData: function() {
 			var data = Backbone.Marionette.ItemView.prototype.serializeData.call(this);
 			data.inputs = _.map(inputs, function(input) {
