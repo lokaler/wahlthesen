@@ -342,10 +342,22 @@ module.exports = function(grunt) {
 					},
 					{
 						expand: true,
+						cwd: "app/styles/images/",
+						src: "*",
+						dest: "dist/debug/images/"
+
+					},
+					{
+						expand: true,
 						src: "app/modules/*/images/**",
 						dest: "dist/debug/images/",
 						rename: rename_dest
-
+					},
+					{
+						expand: true,
+						cwd: "app/styles/font/",
+						src: "*",
+						dest: "dist/debug/font/"
 					},
 					{
 						expand: true,
@@ -374,6 +386,13 @@ module.exports = function(grunt) {
 						cwd: "app/styles/images/",
 						src: "*",
 						dest: "dist/release/images/"
+
+					},
+					{
+						expand: true,
+						cwd: "app/styles/images/",
+						src: "*",
+						dest: "dist/release/images/"
 					},
 					{
 						expand: true,
@@ -392,6 +411,12 @@ module.exports = function(grunt) {
 						src: "app/modules/*/images/**",
 						dest: "dist/release/images/",
 						rename: rename_dest
+					},
+					{
+						expand: true,
+						cwd: "app/styles/font/",
+						src: "*",
+						dest: "dist/release/font/"
 					},
 					{
 						expand: true,
