@@ -63,13 +63,18 @@ define([
 
 		showPartyAverage: function(party) {
 			// TODO! make this fast
+			var el_width       = 14 // $el.width()
+			var col_width      = 120 // this.$('.cell').outerWidth();
+			var question_width = 219 // this.$('.question').outerWidth()
+
 			var $el = this.$('.overlay > .party-avg.%s'.format(party));
 			var avg = App.data.abgeordnete.getAveragesPerQuestion()[this.model.get('id')][party];
-			var col_width = this.$('.cell').outerWidth();
-			var center = this.$('.question').outerWidth() + col_width / 2 + 2 * col_width - $el.width() / 2 + 1;
+			var center = question_width + col_width / 2 + 2 * col_width - el_width / 2 + 1;
+			// console.log(this.$('.cell').outerWidth(), this.$('.question').outerWidth(), $el.width());
 			var left = center + col_width * avg;
-			$el.css('left', left);
-			$el.fadeIn();
+
+			// $el.css('left', left).show();
+			$el[0].setAttribute('style', 'left: ' + left + 'px;'); // the line above in fast
 		}
 
 	});
