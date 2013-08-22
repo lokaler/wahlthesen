@@ -57,7 +57,8 @@ define([
 		},
 
 		mouseoverCircle: function(evt) {
-			var party = evt.currentTarget.parentElement.attributes['data-party'].textContent;
+			// debugger;
+			var party = evt.currentTarget.attributes['data-party'].textContent;
 			$('div.party-avg:not(.%s)'.format(party)).addClass('dim');
 			$('div.party-avg.%s'.format(party)).addClass(' highlight');
 			// console.log('click in', party);
