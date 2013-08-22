@@ -122,7 +122,8 @@ define([
 					party: v[0],
 					bundesland: v[1],
 					gender: v[2],
-					answers: that._unpackAnswers(v[3], v[4])
+					year: v[3],
+					answers: that._unpackAnswers(v[4], v[5])
 				}
 				o.push(a);
 			});

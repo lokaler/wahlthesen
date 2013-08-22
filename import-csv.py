@@ -81,22 +81,28 @@ for row in reader:
 	      note = row[i + 1].strip()
 	      if len(note) > 0:
 		  notes[answer_idx] = note
+
 	  answer_set = [
 	      # partei
 	      partei(row[0]),
 	      # bundesland
-	      row[72],
+	      row[73],
 	      # gender
 	      row[71] == 'weiblich' and 'w' or 'm',
+	      # year of birth
+	      int(row[75]),
 	      # answers
 	      answers
 	  ]
+
 	  if len(notes) > 0:
 	      answer_set.append(notes)
 	  answer_sets.append(answer_set)
+	  
 	except NoPartei:
 	    sys.stderr.write('Warning: Number %d does not have "Partei". Skipping!\n' % rownum)
 	    continue
+
 	except Exception as e:
 	    sys.stderr.write('Could not process opinion number %d\n' % rownum)
 	    sys.stderr.write('%s\n' % row)
