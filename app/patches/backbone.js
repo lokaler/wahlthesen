@@ -1,8 +1,16 @@
 define([
 
-	'bbloader'
+	'bbloader',
+	'./Marionette.RegionManager.prototype.addRegion'
 
 ], function(Backbone) {
+
+	view_instances = {};
+
+	function addViewInstance(view) {
+		if (!view.name) return;
+		view_instances[view.name] = view;
+	}
 
 	function wrapInStartEndComments(html, comment) {
 		return '<!-- START - %s -->\n%s\n<!-- END - %s -->'.format(
@@ -13,6 +21,10 @@ define([
 	}
 
 	Backbone.Marionette.ItemView.prototype.render = function() {
+		// patch - START
+		addViewInstance(this);
+		// patch - END
+
 		this.isClosed = false;
 		
 		this.triggerMethod("before:render", this);

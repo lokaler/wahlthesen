@@ -31,6 +31,17 @@ var inputs = [
 			});
 			$('button[name="start"]').click();
 		}
+	},
+	{
+		name: 'load-answers-minus-1',
+		type: 'button',
+		func: function() {
+			var data = JSON.parse(user_answers_example);
+			$('.row').slice(1).each(function(i, row) {
+				var answer = data[i].value - 1;
+				$(this).find('.radio-button:eq(%s)'.format(answer)).click();
+			});
+		}
 	}
 ];
 	
