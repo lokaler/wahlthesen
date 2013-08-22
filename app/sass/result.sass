@@ -1,3 +1,4 @@
+@import "compass"
 @import "vars"
 
 #result
@@ -12,52 +13,60 @@
 		padding: $default-padding
 		width: 100%
 
-	.result, .party, .value
-		white-space: nowrap
+	.result, .party
 		overflow: hidden
 
-	.col-1
-		font-size: 30px
-
-	.col-2
-		font-size: 26px
-
-	.col-3
-		font-size: 22px
-
-	#main-value
-		width: $first-col-width - 2 * $default-padding
-		border-right: $color-border-grey solid $border-width
-		text-align: center
-
-		div.label
-			display: inline-block
-			margin-bottom: 6px
-
-		div.result
-			display: inline-block
-			font-family: SZSansBold
-			font-size: 38px
-
-			&.fw
-				font-size: 26px
-				margin-top: 15px
-
-			&.piraten
-				font-size: 37px
-
-	#other-values
+	#result-parties
 		// width: $total-width - $first-col-width - 2 * $default-padding - $border-width
 		text-align: center
+		font-size: 26px
+		line-height: 1.2
 
 		.label
-			margin-bottom: 0px
+			font-size: 22px
+			margin-bottom: $default-padding
 
 		.result
-			font-size: 18px
+			padding-bottom: 5px // for box shadows
 
-			.label
-				margin-bottom: 22px
+			.btn-wrapper
+				cursor: pointer
+				position: relative
+				float: left
+				margin: 0px 10px
+				border: 1px solid $color-border-grey
+				background-color: white
+				+single-transition(background-color, 0.1s)
+				+default-box-shadow()
+				+unselectable
 
-			.value
-				margin-right: 10px
+				$mix-color: white
+				$mix-amount: 15%
+				
+				&.gruene.selected
+					background-color: mix($color-gruene, $mix-color, $mix-amount)
+				&.spd.selected
+					background-color: mix($color-spd, $mix-color, $mix-amount)
+				&.linke.selected
+					background-color: mix($color-linke, $mix-color, $mix-amount)
+				&.cdu.selected
+					background-color: mix($color-cdu, $mix-color, $mix-amount)
+				&.csu.selected
+					background-color: mix($color-csu, $mix-color, $mix-amount)
+				&.fdp.selected
+					background-color: mix($color-fdp, $mix-color, $mix-amount)
+				&.piraten.selected
+					background-color: mix($color-piraten, $mix-color, $mix-amount)
+				&.fw.selected
+					background-color: mix($color-fw, $mix-color, $mix-amount)
+
+			.btn-background
+				position: absolute
+				height: 100%
+				width: 100%
+				z-index: 0
+
+			.btn-text
+				position: relative
+				padding: 8px 10px 5px 10px
+				z-index: 1

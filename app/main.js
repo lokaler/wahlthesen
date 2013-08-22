@@ -64,6 +64,9 @@ require([
 		App.layout.region_result.show(result_view);
 		App.evaluated = true;
 		App.layout.$el.addClass('evaluated');
+		result_view.on('party-selected', function(party, selected) {
+			questions_table.selectParty(party, selected);
+		});
 	}
 
 	function show_all_averages() {

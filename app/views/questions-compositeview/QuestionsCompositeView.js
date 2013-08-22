@@ -63,8 +63,15 @@ define([
 
 		showAverages: function() {
 			this.children.each(function(v) { v.showAllAverages(); });
-		}
+		},
 
+		selectParty: function(party, selected) {
+			$('div.party-avg').removeClass('dim').removeClass('highlight');
+			if (selected) {
+				$('div.party-avg:not(.%s)'.format(party)).addClass('dim');
+				$('div.party-avg.%s'.format(party)).addClass(' highlight');
+			}
+		}
 	});
 
 	return QuestionsCompositeView;

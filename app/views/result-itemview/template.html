@@ -1,11 +1,15 @@
-<div id="other-values">
+<div id="result-parties">
 	<div class="label">
 		Übereinstimmungen zwischen Ihren Antworten und denen der Abgeordneten
 	</div>
 	<div class="result">
 		<% _.each(parties, function(party, i) { %>
-			<span class="party <%= party.class %> col-<%= i+1 %>"><%= party.name %></span>
-			<span class="value <%= party.class %> col-<%= i+1 %>"><%= Math.round(party.value) %>%</span>
+			<div class="btn-wrapper <%= party.class %>" data-party="<%= party.class %>">
+				<!-- <div class="btn-background"></div> -->
+				<div class="btn-text party col-<%= i+1 %>">
+					<%= party.name %><br><%= Math.round(party.value) %>%
+				</div>
+			</div>
 		<% }); %>
 	</div>
 </div>

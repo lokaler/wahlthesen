@@ -20,6 +20,11 @@ define([
 
 		name: 'ResultView',
 		template: _.template(template),
+		selected_party: null,
+		
+		events: {
+			'click .btn-wrapper': 'clickParty'
+		},
 
 		/**
 		 * context could look like this:
@@ -76,8 +81,20 @@ define([
 			});
 
 			return ctx;
-		}
+		},
 
+		clickParty: function(evt) {
+			var party = evt.currentTarget.attributes['data-party'].textContent;
+			this.$('.btn-wrapper').removeClass('selected');
+			if (this.selected_party == party) {
+				this.selected_party = null;
+				this.trigger('party-selected', party, false);
+			} else {
+				$(evt.currentTarget).addClass('selected');
+				this.selected_party = party;
+				this.trigger('party-selected', party, true);
+			}
+		}
 	});
 
 	return ResultView;
