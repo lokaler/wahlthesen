@@ -29,6 +29,27 @@ define([
 			'click button[name=start]': 'start'
 		},
 
+		initialize: function() {
+			App.model.on('change:selected_party', function(model) {
+				var party = model.changed.selected_party;
+				this.$('#questions-table-rows').removeClass('single-party-selected');
+				this.$('div.party-avg').removeClass('dim').removeClass('highlight');
+				if (party != null) {
+					this.$('#questions-table-rows').addClass('single-party-selected');
+					this.$('div.party-avg:not(.%s)'.format(party)).addClass('dim');
+					this.$('div.party-avg.%s'.format(party)).addClass(' highlight');
+				}
+			}, this);
+			this.collection.on('change:_show_comments', function(model) {
+				if (!model.changed._show_comments) return;
+				this.collection.filter(function(model_) {
+					if (model.id != model_.id) {
+						model_.set('_show_comments', false);
+					}
+				});
+			}, this);
+		},
+		
 		scrollToTop: function() {
 			var $scroller = this.$('#questions-table-rows-wrapper');
 			$scroller.clearQueue()
@@ -63,14 +84,6 @@ define([
 
 		showAverages: function() {
 			this.children.each(function(v) { v.showAllAverages(); });
-		},
-
-		selectParty: function(party, selected) {
-			$('div.party-avg').removeClass('dim').removeClass('highlight');
-			if (selected) {
-				$('div.party-avg:not(.%s)'.format(party)).addClass('dim');
-				$('div.party-avg.%s'.format(party)).addClass(' highlight');
-			}
 		}
 	});
 

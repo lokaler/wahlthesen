@@ -29,12 +29,14 @@
 			> div:nth-child(1)
 				width: $first-col-width-resulting + $default-padding !important
 
-	.caret i
-		margin-left: -5px
-		font-size: 60px
-		color: #ccc
-		opacity: 1
-		+single-transition(opacity, 0.3s)
+	.caret
+		width: 16px
+		i
+			margin-left: -5px
+			font-size: 60px
+			color: #ccc
+			opacity: 1
+			+single-transition(opacity, 0.3s)
 
 	.filled-in .caret i
 		opacity: 0
@@ -65,50 +67,152 @@
 		#questions-table-rows
 			width: $total-width
 
-			.row
-				display: table-row
-				width: $total-width
+		#questions-table-rows
+
+		.row
+			display: table-row
+			width: $total-width
+			height: $row-height
+			// overflow: hidden
+			color: $color-grey
+
+			// &:nth-child(even)
+			// background-color: $color-bg-grey
+			// .btn-toggle-comments
+				// background-color: $color-bg-grey
+
+			> *
+				position: relative
+				display: table-cell
 				height: $row-height
-				overflow: hidden
-				color: $color-grey
+				vertical-align: middle
+				border-bottom: 1px solid $color-border-grey
 
-				> *
-					display: table-cell
-					height: $row-height
-					vertical-align: middle
+		.btn-toggle-comments
+			background-color: red
+			position: absolute
+			height: 1rem
+			border: 1px solid $color-border-grey
+			border-top: white
+			padding: 0px 10px
+			left: 50%
+			margin-top: -2px
+			background-color: white
+			cursor: pointer
+			opacity: 0
+			z-index: 1
+			width: 150px
+			
+			> div
+				position: relative
+				top: -20px
+				
+			i
+				position: relative
+				margin-left: 5px
+				font-size: 14px
 
-				&:nth-child(even)
-					background-color: $color-bg-grey
+			.open
+				display: block
+			.close
+				display: none
 
-				.question
-					padding: 0 0 0 $default-padding
-					width: $first-col-width-resulting
+
+		.question
+			padding: 0 0 0 $default-padding
+			width: $first-col-width-resulting
+			text-align: left
+
+		.cell
+			width: $col-width
+
+		.overlay
+			position: absolute
+			width: auto
+			height: auto
+			margin-left: -$total-width
+
+			> .party-avg
+				top: 49px
+				left: -20px
+				position: absolute
+				cursor: default
+				opacity: 0.75
+				transition-property: opacity
+				transition-duration: 0.5s
+
+			> .party-avg.dim
+				opacity: 0.2
+
+			> .party-avg.highlight
+				margin-top: -5px
+				margin-left: -4px
+				font-size: 27px
+				opacity: 1
+				z-index: 1
+
+		.comments > div
+			border-bottom: 1px solid $color-border-grey
+			
+			.comments-container
+				padding-top: 30px
+				padding-bottom: 10px
+	
+				h3, .comment
+					margin-top: 0px
+					margin-bottom: 0px
+					position: relative
+					left: 20%
+					width: 60%
+	
+				.comment
 					text-align: left
+					border-bottom: 1px solid $color-border-grey
+					padding: 3px 0px
+					margin: 6px 0px
+					
+					.value
+						.icon-circle
+							color: #eee
+	
+						&.gruene .marked
+							color: $color-gruene
+						&.spd .marked
+							color: $color-spd
+						&.linke .marked
+							color: $color-linke
+						&.cdu .marked
+							color: $color-cdu
+						&.csu .marked
+							color: $color-csu
+						&.fdp .marked
+							color: $color-fdp
+						&.piraten .marked
+							color: $color-piraten
+						&.fw .marked
+							color: $color-fw
+		
+					.abgeordneter
+						margin-left: 5px
+						color: $color-grey
+						
+				.comment:first-child
+					border-top: 1px solid $color-border-grey
+	
+				.comment:last-child
+					border-bottom: none
+			
+// class switches
+#questions-table
+	.single-party-selected .btn-toggle-comments
+		opacity: 1 !important
+		+single-transition(opacity, 0.2s)
+		> div
+			top: -10px !important
+			+single-transition(top, 0.2s)
 
-				.cell
-					width: $col-width
-
-				.overlay
-					position: absolute
-					width: auto
-					height: auto
-					margin-left: -$total-width
-
-					> .party-avg
-						top: 49px
-						left: -20px
-						position: absolute
-						cursor: default
-						opacity: 0.75
-						transition-property: opacity
-						transition-duration: 0.5s
-
-					> .party-avg.dim
-						opacity: 0.2
-
-					> .party-avg.highlight
-						margin-top: -5px
-						margin-left: -4px
-						font-size: 27px
-						opacity: 1
-						z-index: 1
+	.comments-shown .btn-toggle-comments
+		.open
+			display: none !important
+		.close
+			display: block !important

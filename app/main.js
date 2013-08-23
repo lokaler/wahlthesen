@@ -1,6 +1,7 @@
 require([
 
 	'app',
+	'bbloader',
 	'names',
 
 	'modules/devtools/Module',
@@ -25,6 +26,7 @@ require([
 ], function(
 
 	App,
+	Backbone,
 	__unused__,
 
 	DevtoolsModule,
@@ -49,6 +51,13 @@ require([
 
 	App.modules = {};
 
+	App.model = new Backbone.Model({
+		defaults: {
+			selected_party: null,
+			evaluated: false
+		}
+	});
+
 	function show_filter() {
 		var questions_filter = new QuestionsFilterView({
 			model: App.data.questions_filter
@@ -63,9 +72,16 @@ require([
 		var result_view = new ResultView({ model: App.data.result });
 		App.layout.region_result.show(result_view);
 		App.evaluated = true;
+		App.model.set('evaluated', true);
 		App.layout.$el.addClass('evaluated');
 		result_view.on('party-selected', function(party, selected) {
-			questions_table.selectParty(party, selected);
+			var selected_party = App.model.get('selected_party');
+			if (selected) {
+				App.model.set('selected_party', party);
+			} else {
+				App.model.set('selected_party', null);
+			}
+			// questions_table.selectParty(party, selected);
 		});
 	}
 

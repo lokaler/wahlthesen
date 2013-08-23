@@ -3,6 +3,9 @@ define([
 	'app',
 	'lodash',
 	'bbloader',
+
+	'./CommentsView',
+
 	'text!./template.html'
 
 ], function (
@@ -10,22 +13,39 @@ define([
 	App,
 	_,
 	Backbone,
+
+	CommentsView,
+
 	template_question
 
 ) {
 
-	var QuestionView = Backbone.Marionette.ItemView.extend({
+	var QuestionView = Backbone.Marionette.Layout.extend({
 
 		name: 'QuestionView',
 		tagName:  'div',
 		template: _.template(template_question),
-		className: 'row',
+		regions: { comments: '.comments' },
+		show_comments: false,
+
+		initialize: function() {
+			this.listenTo(this.comments, 'close', function() {
+				this.show_comments = false;
+				this.$el.removeClass('comments-shown');
+				this.trigger('comments-close');
+			}, this);
+		},
+
+		modelEvents: {
+			'change:_show_comments': 'showComments'
+		},
 
 		events: {
 			'click .radio-button':      'clickRadioButton',
 			'click .checkbox':          'clickCheckBox',
-			'mouseover .icon-circle':   'mouseoverCircle',
-			'mouseout  .icon-circle':   'mouseoutCircle'
+			// 'mouseover .icon-circle':   'mouseoverCircle',
+			// 'mouseout  .icon-circle':   'mouseoutCircle'
+			'click .btn-toggle-comments':   'toggleComments',
 		},
 
 		clickRadioButton: function(evt) {
@@ -86,13 +106,26 @@ define([
 			var $el = this.$('.overlay > .party-avg.%s'.format(party));
 			var avg = App.data.abgeordnete.getAveragesPerQuestion()[this.model.get('id')][party];
 			var center = question_width + col_width / 2 + 2 * col_width - el_width / 2 + 1;
-			// console.log(this.$('.cell').outerWidth(), this.$('.question').outerWidth(), $el.width());
 			var left = center + col_width * avg;
 
 			// $el.css('left', left).show();
 			$el[0].setAttribute('style', 'left: ' + left + 'px;'); // the line above in fast
-		}
+		},
 
+		toggleComments: function() {
+			this.model.set('_show_comments', !this.model.get('_show_comments'));
+		},
+		
+		showComments: function() {
+			if (this.model.get('_show_comments')) {
+				this.$el.addClass('comments-shown');
+				var view = new CommentsView({ model: this.model });
+				this.comments.show(view);
+			} else {
+				this.$el.removeClass('comments-shown');
+				this.comments.close();
+			}
+		}
 	});
 
 	return QuestionView;

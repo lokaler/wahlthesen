@@ -14,7 +14,8 @@ define([
 
 		defaults: {
 			id: undefined,
-			text: undefined
+			text: undefined,
+			_show_comments: false
 		}
 
 	});
