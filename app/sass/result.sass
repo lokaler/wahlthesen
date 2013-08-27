@@ -20,16 +20,23 @@
 		// width: $total-width - $first-col-width - 2 * $default-padding - $border-width
 		text-align: center
 		font-size: 26px
-		line-height: 1.2
+		line-height: 1
 
 		.label
 			font-size: 22px
 			margin-bottom: $default-padding
 
+		.todo
+			font-size: 18px
+			margin-top: $default-padding - 5px
+			margin-bottom: 0
+
 		.result
 			padding-bottom: 5px // for box shadows
+			display: inline-block
 
 			.btn-wrapper
+				text-align: left
 				cursor: pointer
 				position: relative
 				float: left
@@ -41,8 +48,11 @@
 				+unselectable
 
 				$mix-color: white
-				$mix-amount: 15%
+				$mix-amount: 100%
 				
+				&.selected
+					color: white
+
 				&.gruene.selected
 					background-color: mix($color-gruene, $mix-color, $mix-amount)
 				&.spd.selected
