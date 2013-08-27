@@ -6,7 +6,7 @@
 
 	$first-col-width-resulting: $first-col-width - $default-padding
 	$col-width: ($total-width - $first-col-width) / 6
-	$row-height: 7rem
+	$row-height: 6.5rem
 	$shadow-height: 10px
 
 	width: $total-width
@@ -129,14 +129,14 @@
 
 		.overlay
 			position: absolute
-			width: auto
-			height: auto
 			margin-left: -$total-width
 
 			> .party-avg
-				top: 49px
-				left: -20px
 				position: absolute
+				top: 50%
+				margin-top: -8px
+				margin-left: -4px
+				left: -20px
 				cursor: default
 				opacity: 0.75
 				transition-property: opacity
@@ -146,8 +146,8 @@
 				opacity: 0.2
 
 			> .party-avg.highlight
-				margin-top: -5px
-				margin-left: -4px
+				margin-top: -14px
+				margin-left: -10px
 				font-size: 27px
 				opacity: 1
 				z-index: 1

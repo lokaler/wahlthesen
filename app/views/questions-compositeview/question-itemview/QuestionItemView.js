@@ -97,16 +97,23 @@ define([
 			});
 		},
 
+		mapRange: function(a1, a2, b1, b2, s) {
+			return b1 + (s-a1) * (b2-b1 ) / (a2-a1);
+		},
+
 		showPartyAverage: function(party) {
-			// TODO! make this fast
-			var el_width       = 14 // $el.width()
-			var col_width      = 120 // this.$('.cell').outerWidth();
-			var question_width = 219 // this.$('.question').outerWidth()
+			// var col_width = this.$('.cell').outerWidth();
+			// var cells = this.$el.find('.cell');
+			// var left_min = $(cells[0]).position().left + col_width/2;
+			// var left_max = $(cells[4]).position().left + col_width/2;
+			var left_min = 287;
+			var left_max = 732;
 
 			var $el = this.$('.overlay > .party-avg.%s'.format(party));
 			var avg = App.data.abgeordnete.getAveragesPerQuestion()[this.model.get('id')][party];
-			var center = question_width + col_width / 2 + 2 * col_width - el_width / 2 + 1;
-			var left = center + col_width * avg;
+			// var avg = Math.floor(Math.random()*5) - 2;
+			
+			var left = this.mapRange(-2, 2, left_min, left_max, avg);
 
 			// $el.css('left', left).show();
 			$el[0].setAttribute('style', 'left: ' + left + 'px;'); // the line above in fast
