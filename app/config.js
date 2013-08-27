@@ -8,9 +8,7 @@ require.config({
 		'underscore.string': '../lib/underscore.string',
 
 		'backbone':              '../lib/backbone/backbone',
-		'backbone.marionette':   '../lib/backbone/backbone.marionette.1.0.4/core/amd/backbone.marionette',
-		'backbone.wreqr':        '../lib/backbone/backbone.marionette.1.0.4/backbone.wreqr',
-		'backbone.babysitter':   '../lib/backbone/backbone.marionette.1.0.4/backbone.babysitter',
+		'backbone.marionette':   '../lib/backbone/backbone.marionette-1.1.0',
 		
 		"text": "../lib/require-plugins/text",
 		"hbs":  "../lib/require-plugins/hbs",
@@ -36,6 +34,11 @@ require.config({
 		'backbone': {
 			'deps': ['jquery', 'underscore'],
 			'exports': 'Backbone'
+		},
+
+		'backbone.marionette': {
+			'deps': ['backbone'],
+			'exports': 'Marionette'
 		},
 		
 		'backbone.super': {
