@@ -1,21 +1,38 @@
 <div class="comments-container">
-	<h3><%= text %></h3>
-	<% _.each(answers, function(answer) { var v = answer.value %>
-		<div class="comment">
-			<div class="value <%= party %>">
-				<span class="icon-circle <%= (v==-2)? 'marked':'' %>"/>
-				<span class="icon-circle <%= (v==-1)? 'marked':'' %>"/>
-				<span class="icon-circle <%= (v==-0)? 'marked':'' %>"/>
-				<span class="icon-circle <%= (v== 1)? 'marked':'' %>"/>
-				<span class="icon-circle <%= (v== 2)? 'marked':'' %>"/>
-				<span class="abgeordneter">
-					<%= (answer.gender == "w")? 'Abgeordnete':'Abgeordneter' %>
-					aus <%= answer.bundesland %>
-				</span>
+	<h1><%= text %></h1>
+
+	<h2>Anzahl der Abgeordneten pro Antwort</h2>
+	
+	<div>
+		<table class="<%= party %>">
+			<% _.each(_.range(1, 6), function(i) { %>
+				<tr>
+					<td class="circles"><%= render_circles(_.object(['answer_'+i], [true])) %></td>
+					<td class="bar">
+						<% console.log(num_answers_percent(i)) %>
+						<div class="bar"><div style="width: <%= num_answers_percent(i) %>%"/></div>
+						<div class="text"><span><%= num_answers_text(i) %></span></div>
+					</td>
+				</tr>
+			<% }); %>
+		</table>
+	</div>
+
+	<h2>Kommentare von Abgeordneten</h2>
+	<div>
+		<% _.each(answers_note, function(answer) { %>
+			<div class="comment">
+				<div class="value <%= party %>">
+					<%= render_circles(answer) %>
+					<span class="abgeordneter">
+						<%= (answer.gender_w)? 'Abgeordnete':'Abgeordneter' %>
+						aus <%= answer.bundesland %>
+					</span>
+				</div>
+				<div class="text">
+					<%= answer.note %>
+				</div>
 			</div>
-			<div class="text">
-				<%= answer.note %>
-			</div>
-		</div>
-	<% }); %>
+		<% }); %>
+	</div>
 </div>

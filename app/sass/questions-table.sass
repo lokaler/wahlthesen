@@ -73,13 +73,7 @@
 			display: table-row
 			width: $total-width
 			height: $row-height
-			// overflow: hidden
 			color: $color-grey
-
-			// &:nth-child(even)
-			// background-color: $color-bg-grey
-			// .btn-toggle-comments
-				// background-color: $color-bg-grey
 
 			> *
 				position: relative
@@ -96,7 +90,7 @@
 			border-top: white
 			padding: 0px 10px
 			left: 50%
-			margin-top: -2px
+			margin-top: -1px
 			background-color: white
 			cursor: pointer
 			opacity: 0
@@ -156,51 +150,116 @@
 			border-bottom: 1px solid $color-border-grey
 			
 			.comments-container
+				background-color: #f6f6f6
 				padding-top: 30px
 				padding-bottom: 10px
 	
-				h3, .comment
+				h3, .comment, table
 					margin-top: 0px
 					margin-bottom: 0px
 					position: relative
 					left: 20%
 					width: 60%
+
+				h1
+					margin-top: 0
+					margin-bottom: 0
+					font-size: 120%
+
+				h2
+					margin-top: 20px
+					font-size: 110%
+
+				.value, table
+					.icon-circle
+						color: #ddd
+
+					&.gruene .marked
+						color: $color-gruene
+					&.spd .marked
+						color: $color-spd
+					&.linke .marked
+						color: $color-linke
+					&.cdu .marked
+						color: $color-cdu
+					&.csu .marked
+						color: $color-csu
+					&.fdp .marked
+						color: $color-fdp
+					&.piraten .marked
+						color: $color-piraten
+					&.fw .marked
+						color: $color-fw
+
+				table
+					.icon-circle
+						color: #ddd
+
+				table
+					&.gruene .marked 
+						color: $color-gruene
+					&.spd .marked
+						color: $color-spd
+					&.linke .marked
+						color: $color-linke
+					&.cdu .marked
+						color: $color-cdu
+					&.csu .marked
+						color: $color-csu
+					&.fdp .marked
+						color: $color-fdp
+					&.piraten .marked
+						color: $color-piraten
+					&.fw .marked
+						color: $color-fw
+
+				table td, table th
+					padding: 3px
+
+				table
+					td.circles
+						text-align: left
+						width: 75px
 	
+					td.bar
+						position: relative
+						border: 1px solid $color-border-grey
+						background-color: white
+						
+						div.bar
+							position: absolute
+							top: 3px
+							bottom: 3px
+							left: 3px
+							right: 3px
+							
+							> div
+								position: absolute
+								background-color: #ddd
+								height: 100%
+
+						div.text
+							position: relative
+							z-index: 1
+							color: #333
+
 				.comment
 					text-align: left
 					border-bottom: 1px solid $color-border-grey
 					padding: 3px 0px
 					margin: 6px 0px
 					
-					.value
-						.icon-circle
-							color: #eee
-	
-						&.gruene .marked
-							color: $color-gruene
-						&.spd .marked
-							color: $color-spd
-						&.linke .marked
-							color: $color-linke
-						&.cdu .marked
-							color: $color-cdu
-						&.csu .marked
-							color: $color-csu
-						&.fdp .marked
-							color: $color-fdp
-						&.piraten .marked
-							color: $color-piraten
-						&.fw .marked
-							color: $color-fw
-		
 					.abgeordneter
 						margin-left: 5px
 						color: $color-grey
 						
 				.comment:first-child
-					border-top: 1px solid $color-border-grey
-	
+					padding-top: 0
+					margin-top: 0
+
 				.comment:last-child
+					padding-bottom: 0
+					margin-bottom: 0
 					border-bottom: none
 			
 // class switches
