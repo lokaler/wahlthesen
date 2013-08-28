@@ -67,7 +67,7 @@ require([
 			model.set(field, value);
 		});
 	}
-
+	
 	function show_results() {
 		var result_view = new ResultView({ model: App.data.result });
 		App.layout.region_result.show(result_view);
@@ -135,10 +135,6 @@ require([
 
 	App.listenTo(questions_table, 'num-answered', function(num_answered) {
 		bottom_view.displayNumAnswered(num_answered);
-	});
-
-	App.listenToOnce(questions_table, 'all-answered', function() {
-		bottom_view.enableStartButton();
 	});
 
 	// bottom

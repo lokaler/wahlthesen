@@ -21,7 +21,8 @@ define([
 		template: _.template(template),
 
 		events: {
-			'click button[name=start]': 'clickStartButton'
+			'click button[name=start]': 'clickStartButton',
+			'click .fill-in-questions': 'clickFillIn'
 		},
 
 		modelEvents: { all: 'render' },
@@ -31,10 +32,13 @@ define([
 				this.trigger('start');
 		},
 
-		enableStartButton: function() {
-			// this.$('button[name=start]').removeClass('disabled');
+		clickFillIn: function() {
+			App.data.user_answers.each(function(answer) {
+				answer.set('value', Math.floor(Math.random() * 4) - 2);
+			});
+			this.trigger('start');
 		},
-		
+
 		displayNumAnswered: function(num_answered) {
 			var $btn = $('button[name=start]');
 			if (num_answered < 35) {
