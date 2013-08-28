@@ -61,7 +61,7 @@ define([
 			if ($next_row.length == 0)
 				return;
 			var $scroller = this.$('#questions-table-rows-wrapper');
-			var next_row_bottom_pos = $next_row.position().top + $next_row.height() + $scroller.scrollTop();
+			var next_row_bottom_pos = $next_row.position().top + $next_row.height() + $scroller.scrollTop() + 100;
 			var scroll_bottom = $scroller.height() + $scroller.scrollTop();
 			if (next_row_bottom_pos > scroll_bottom) {
 				$scroller.clearQueue()
